@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Conduct concerns
+    url: https://github.com/Pick-Your-AI/.github/blob/main/CODE_OF_CONDUCT.md
+    about: Follow the existing reporting instructions; do not post private concerns in intake.

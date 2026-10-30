@@ -1,0 +1,33 @@
+name: Staffing or reviewer availability update
+description: Record evidence of role authority, availability and onboarding capacity; membership alone is insufficient.
+labels:
+- type:availability
+body:
+- type: markdown
+  attributes:
+    value: '**Public issue.** Do not include private applicant or personnel details.'
+- type: input
+  id: record
+  attributes:
+    label: Canonical record ID or application issue URL
+  validations:
+    required: true
+- type: textarea
+  id: change
+  attributes:
+    label: Proposed change and reason
+  validations:
+    required: true
+- type: textarea
+  id: evidence
+  attributes:
+    label: Evidence, authority and receiving reviewer
+  validations:
+    required: true
+- type: textarea
+  id: capacity
+  attributes:
+    label: Openings, time, onboarding capacity and verification date
+    description: Use unknown when not confirmed; do not infer a vacancy from member count.
+  validations:
+    required: false

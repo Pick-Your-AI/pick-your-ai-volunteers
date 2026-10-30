@@ -1,0 +1,13 @@
+# Model and recommendations
+
+[data/directory.v1.json](../data/directory.v1.json) is the canonical directory; [public/directory.v1.json](../public/directory.v1.json) is its generated public export. Version 1.0.0 uses stable local IDs built from GitHub entity IDs, preserving identity across display-name changes. Team, Repository and Project collections have independent IDs and many-to-many references. Roles describe work; routing policies describe authority. Opportunities describe needs, never people. Applications stay in GitHub issues and never enter the directory export.
+
+Schema: [directory v1](../schemas/directory.v1.schema.json), [application v1](../schemas/application.v1.schema.json), [decision v1](../schemas/decision.v1.schema.json). Changes to field meanings require a new version and migration notes. Research contracts are separate and unchanged.
+
+Each public entity includes evidence and verification time. Opportunities include role, skills, prerequisites, time commitment, beginner suitability, mentoring/onboarding capacity, openings, recruitment status, staffing need, priority rationale and routing policy. Null means unknown, not zero. `confirmed_vacancy`, `additional_help_wanted`, `no_active_contributors`, `leader_needed`, `maintainer_needed`, `availability_unknown` and `recruitment_paused` are separate classifications. Member count never establishes active contributors. Empty specialty leadership is supported by the explicit organization decision, not count alone.
+
+`program.recommend` is deterministic and optional. It excludes non-recruiting, stale, unsupported onboarding, unavailable required mentoring and incompatible known time requirements. Remaining opportunities sort by expressed-interest match, number of exact skill matches, confirmed high priority and stable ID. It returns explanations rather than a volunteer suitability score. Unknown minimum hours means “to be agreed.” Recommendations do not override prerequisites or reviewer judgment. It uses no sensitive personal features. Browse-all remains available even when the result is empty, as it is for the initial unconfirmed capacity snapshot.
+
+Issue Forms are static. Generated independent multi-select lists support Team/Repo/Project interests but cannot implement dependent dropdowns. The future website can filter relationships dynamically. Running `scripts/generate.py --check` rejects form/export drift. Operator changes are PR-reviewed; applicant input cannot change canonical records.
+
+GitHub team links are verified authenticated organization references. GitHub may require organization access to view them; this directory does not grant access. Repository and public Project links are independently browsable.
