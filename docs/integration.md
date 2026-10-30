@@ -25,3 +25,19 @@ Verify webhook HMAC SHA-256 over raw bytes with constant-time comparison, allowl
 Keep public directory cache, public application content and any future restricted intake in separate stores and authorization paths. A private repository does not isolate one applicant from another. A confidential intake requires separately designed access controls, retention policy, reporting route and user disclosure before collecting sensitive data. It must not feed details into public Project fields, exports or logs.
 
 Required website inputs: this repository and Project URL, v1 schema, release/commit pin, application link, visibility disclosure, deterministic recommendation parity tests and the eventually approved reviewer policy. Keep all live decisions on GitHub until the authenticated server implementation has its own security and end-to-end verification.
+
+## Verified local consumer example
+
+From the repository root, after installing requirements:
+
+```python
+import json
+from pathlib import Path
+from scripts.program import recommend
+
+directory = json.loads(Path("public/directory.v1.json").read_text(encoding="utf-8"))
+results = recommend(directory, interests=["op-education"], skills=["documentation"], needs_mentor=True)
+print(results)
+```
+
+The initial snapshot returns `[]`: all opportunities are paused with unconfirmed onboarding capacity. Show the browse-all directory and explain that readiness is unconfirmed; do not interpret an empty recommendation list as a judgment about the volunteer.
