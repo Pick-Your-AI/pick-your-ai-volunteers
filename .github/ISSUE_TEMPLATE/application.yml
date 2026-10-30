@@ -16,13 +16,13 @@ body:
     options:
     - Help me find where I am most useful
     - No preference
-    - op-lead-maintainers-ai-builder — Lead Maintainers - AI Builder â€” leadership interest
-    - op-lead-maintainers-ai-papers-index — Lead Maintainers - AI Papers & Index â€” leadership interest
-    - op-lead-maintainers-catalog-pipeline — Lead Maintainers - Catalog Pipeline â€” leadership interest
-    - op-lead-maintainers-datasets-benchmarks — Lead Maintainers - Datasets & Benchmarks â€” leadership interest
-    - op-education — Education â€” expression of interest
-    - op-funding-grants-sustainability — Funding, Grants & Sustainability â€” expression of interest
-    - op-organization-maintainers — Organization Maintainers â€” expression of interest
+    - op-lead-maintainers-ai-builder — Lead Maintainers - AI Builder — leadership interest
+    - op-lead-maintainers-ai-papers-index — Lead Maintainers - AI Papers & Index — leadership interest
+    - op-lead-maintainers-catalog-pipeline — Lead Maintainers - Catalog Pipeline — leadership interest
+    - op-lead-maintainers-datasets-benchmarks — Lead Maintainers - Datasets & Benchmarks — leadership interest
+    - op-education — Education — expression of interest
+    - op-funding-grants-sustainability — Funding, Grants & Sustainability — expression of interest
+    - op-organization-maintainers — Organization Maintainers — expression of interest
     multiple: true
   validations:
     required: false
@@ -161,19 +161,19 @@ body:
     options:
     - Help me find where I am most useful
     - No preference
-    - project-PVT_kwDOFHg4Xc4BpYpe — Pick Your AI â€” Community â€” Education
-    - project-PVT_kwDOFHg4Xc4BpXxK — Pick Your AI â€” Research â€” Cloud Agents
-    - project-PVT_kwDOFHg4Xc4BoZsU — Pick Your AI â€” Research â€” Datasets & Benchmarks
-    - project-PVT_kwDOFHg4Xc4BoUH6 — Pick Your AI â€” Research â€” AI Applications
-    - project-PVT_kwDOFHg4Xc4BoUHz — Pick Your AI â€” Research â€” AI Papers & Index
-    - project-PVT_kwDOFHg4Xc4BoUHM — Pick Your AI â€” Development â€” Catalog Pipeline
-    - project-PVT_kwDOFHg4Xc4Bnqgs — Pick Your AI â€” Operations â€” Funding, Grants & Sustainability
-    - project-PVT_kwDOFHg4Xc4BnbgH — Pick Your AI â€” Development â€” Contributor Leaderboard
-    - project-PVT_kwDOFHg4Xc4BnbQs — Pick Your AI â€” Development â€” Apple/iOS
-    - project-PVT_kwDOFHg4Xc4BnbMJ — Pick Your AI â€” Development â€” Android
-    - project-PVT_kwDOFHg4Xc4BnX2e — Pick Your AI â€” Development â€” Main Website
-    - project-PVT_kwDOFHg4Xc4BnViW — Pick Your AI â€” Research â€” Market & Competitive Intelligence
-    - project-PVT_kwDOFHg4Xc4BnUon — Pick Your AI â€” Research â€” AI Builder
+    - project-PVT_kwDOFHg4Xc4BpYpe — Pick Your AI — Community — Education
+    - project-PVT_kwDOFHg4Xc4BpXxK — Pick Your AI — Research — Cloud Agents
+    - project-PVT_kwDOFHg4Xc4BoZsU — Pick Your AI — Research — Datasets & Benchmarks
+    - project-PVT_kwDOFHg4Xc4BoUH6 — Pick Your AI — Research — AI Applications
+    - project-PVT_kwDOFHg4Xc4BoUHz — Pick Your AI — Research — AI Papers & Index
+    - project-PVT_kwDOFHg4Xc4BoUHM — Pick Your AI — Development — Catalog Pipeline
+    - project-PVT_kwDOFHg4Xc4Bnqgs — Pick Your AI — Operations — Funding, Grants & Sustainability
+    - project-PVT_kwDOFHg4Xc4BnbgH — Pick Your AI — Development — Contributor Leaderboard
+    - project-PVT_kwDOFHg4Xc4BnbQs — Pick Your AI — Development — Apple/iOS
+    - project-PVT_kwDOFHg4Xc4BnbMJ — Pick Your AI — Development — Android
+    - project-PVT_kwDOFHg4Xc4BnX2e — Pick Your AI — Development — Main Website
+    - project-PVT_kwDOFHg4Xc4BnViW — Pick Your AI — Research — Market & Competitive Intelligence
+    - project-PVT_kwDOFHg4Xc4BnUon — Pick Your AI — Research — AI Builder
     - project-PVT_kwDOFHg4Xc4BpZWN — Pick Your AI — Volunteer Operations
     multiple: true
   validations:
