@@ -1,0 +1,21 @@
+name: Sync volunteer Project
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.VOLUNTEER_PROJECT_TOKEN }}
+    steps:
+      - name: Require separately provisioned Project credential
+        run: test -n "$GH_TOKEN"
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/project_sync.py

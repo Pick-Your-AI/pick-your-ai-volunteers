@@ -1,0 +1,574 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "verified_at",
+    "teams",
+    "repositories",
+    "projects",
+    "roles",
+    "opportunities",
+    "routing_policies"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "verified_at": {
+      "type": "string"
+    },
+    "teams": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "id",
+          "name",
+          "description",
+          "public_benefit",
+          "github",
+          "verified_at",
+          "evidence",
+          "parent_team_id",
+          "repository_ids",
+          "project_ids",
+          "membership_observation",
+          "operational_ownership",
+          "review_capacity"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "public_benefit": {
+            "type": "string"
+          },
+          "github": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "url",
+              "id"
+            ],
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "id": {
+                "type": [
+                  "integer",
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "verified_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "parent_team_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "repository_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "project_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "membership_observation": {
+            "type": "string"
+          },
+          "operational_ownership": {
+            "type": "string"
+          },
+          "review_capacity": {
+            "type": "string"
+          }
+        }
+      },
+      "uniqueItems": true
+    },
+    "repositories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "id",
+          "name",
+          "description",
+          "public_benefit",
+          "github",
+          "verified_at",
+          "evidence",
+          "team_ids",
+          "project_ids"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "public_benefit": {
+            "type": "string"
+          },
+          "github": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "url",
+              "id"
+            ],
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "id": {
+                "type": [
+                  "integer",
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "verified_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "team_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "project_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          }
+        }
+      },
+      "uniqueItems": true
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "id",
+          "name",
+          "description",
+          "public_benefit",
+          "github",
+          "verified_at",
+          "evidence",
+          "repository_ids",
+          "team_ids"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "public_benefit": {
+            "type": "string"
+          },
+          "github": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "url",
+              "id"
+            ],
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "id": {
+                "type": [
+                  "integer",
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "verified_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "repository_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "team_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          }
+        }
+      },
+      "uniqueItems": true
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "responsibilities",
+          "skills"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "responsibilities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          }
+        }
+      },
+      "uniqueItems": true
+    },
+    "opportunities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "id",
+          "name",
+          "description",
+          "public_benefit",
+          "github",
+          "verified_at",
+          "evidence",
+          "team_ids",
+          "repository_ids",
+          "project_ids",
+          "role_ids",
+          "skills",
+          "prerequisites",
+          "time_commitment",
+          "minimum_hours",
+          "beginner_suitability",
+          "mentoring_capacity",
+          "onboarding_capacity",
+          "openings",
+          "status",
+          "staffing_need",
+          "priority",
+          "priority_rationale",
+          "routing_policy_id"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "public_benefit": {
+            "type": "string"
+          },
+          "github": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "url",
+              "id"
+            ],
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "id": {
+                "type": [
+                  "integer",
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "verified_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "team_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "repository_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "project_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "role_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "prerequisites": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "time_commitment": {
+            "type": "string"
+          },
+          "minimum_hours": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "beginner_suitability": {
+            "enum": [
+              "yes",
+              "no",
+              "unknown"
+            ]
+          },
+          "mentoring_capacity": {
+            "enum": [
+              "confirmed",
+              "unavailable",
+              "unknown"
+            ]
+          },
+          "onboarding_capacity": {
+            "enum": [
+              "confirmed",
+              "unavailable",
+              "unknown"
+            ]
+          },
+          "openings": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "status": {
+            "enum": [
+              "recruiting",
+              "paused",
+              "filled"
+            ]
+          },
+          "staffing_need": {
+            "enum": [
+              "confirmed_vacancy",
+              "additional_help_wanted",
+              "no_active_contributors",
+              "leader_needed",
+              "maintainer_needed",
+              "availability_unknown",
+              "recruitment_paused"
+            ]
+          },
+          "priority": {
+            "enum": [
+              "high",
+              "normal",
+              "unconfirmed"
+            ]
+          },
+          "priority_rationale": {
+            "type": "string"
+          },
+          "routing_policy_id": {
+            "type": "string"
+          }
+        }
+      },
+      "uniqueItems": true
+    },
+    "routing_policies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "status",
+          "order",
+          "primary_review_route",
+          "approved_fallback_route",
+          "evidence"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "order": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "primary_review_route": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "approved_fallback_route": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          }
+        }
+      },
+      "uniqueItems": true
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

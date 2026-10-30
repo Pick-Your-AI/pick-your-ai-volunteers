@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "verified_at": "2026-10-30T05:09:08.163992+00:00",
+  "environment": "Fresh isolated Ubuntu 24.04.5 KVM guest; Python 3.12",
+  "tests": 28,
+  "result": "passed",
+  "checks": [
+    "schema and relationships",
+    "local documentation links",
+    "generated forms and export consistency",
+    "synthetic decision and mocked GitHub transport tests"
+  ],
+  "source_sha256": {
+    "scripts\\generate.py": "eea54a36a6b1fe71d5df9faa7db0f46c0f82eddfe1016a2fb2849226da2346c3",
+    "scripts\\github_intake.py": "2febba8dafa56cf9ec27f07fd065bce6a5f257c26bc8afc24c365f863b2c181a",
+    "scripts\\program.py": "903d8917e0b77c6be87cf62ecf2d6961de42691a2d5fdd8895ca7a173b9e9d69",
+    "scripts\\project_sync.py": "331ea0f2bae2bf84fb5cacd37e0e11ba2478884c6319a0390210a72da5dd03ba",
+    "scripts\\validate.py": "a714039c8881ce9f44d7d29d03b9946abc322a6b77c38b6003ac0730155faf33",
+    "tests\\test_intake.py": "d1fe673ac8504c14b901f69e1b1ebdd81572cff2b7e05b137b47d0e4610b254a",
+    "tests\\test_program.py": "8d7fe58532f99a8c00853b4552117d2899b8e40ca2808734820edb3782040bc3"
+  },
+  "not_verified": [
+    "live default-branch intake before merge",
+    "real volunteer placement",
+    "reviewer availability",
+    "private intake",
+    "website API",
+    "independent PR approval"
+  ]
+}

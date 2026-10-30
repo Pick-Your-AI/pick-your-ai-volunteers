@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "interests",
+    "desired_role",
+    "availability",
+    "mentoring_needs",
+    "public_consent",
+    "referral_consent"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "interests": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "desired_role": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 100
+      }
+    },
+    "public_work_examples": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "availability": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "mentoring_needs": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "public_consent": {
+      "const": true
+    },
+    "referral_consent": {
+      "enum": [
+        "ask_each_time",
+        "do_not_refer"
+      ]
+    }
+  }
+}

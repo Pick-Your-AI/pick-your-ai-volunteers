@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "action",
+    "reason"
+  ],
+  "properties": {
+    "action": {
+      "enum": [
+        "accept",
+        "decline",
+        "request_information",
+        "refer",
+        "agree_referral",
+        "decline_referral",
+        "request_escalation",
+        "approve_escalation",
+        "reject_escalation",
+        "withdraw",
+        "begin_onboarding",
+        "request_invitation",
+        "record_invitation_sent",
+        "record_invitation_accepted",
+        "complete_onboarding",
+        "close"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "destination": {
+      "type": "string"
+    },
+    "receipt": {
+      "type": "string",
+      "format": "uri"
+    },
+    "unavailability": {
+      "enum": [
+        "no_designated_reviewer",
+        "recorded_absence",
+        "conflict_of_interest",
+        "response_period_expired"
+      ]
+    }
+  }
+}

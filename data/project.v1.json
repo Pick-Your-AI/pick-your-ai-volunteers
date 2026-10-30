@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "PVT_kwDOFHg4Xc4BpZWN",
+  "number": 14,
+  "url": "https://github.com/orgs/Pick-Your-AI/projects/14",
+  "visibility": "public",
+  "views": [
+    {
+      "id": "PVTV_lADOFHg4Xc4BpZWNzgMUIpU",
+      "name": "New applications",
+      "filter": "Kind:Application \"Volunteer state\":New",
+      "number": 2
+    },
+    {
+      "id": "PVTV_lADOFHg4Xc4BpZWNzgMUIpo",
+      "name": "Awaiting information",
+      "filter": "Kind:Application \"Volunteer state\":\"Awaiting information\"",
+      "number": 3
+    },
+    {
+      "id": "PVTV_lADOFHg4Xc4BpZWNzgMUIpw",
+      "name": "Awaiting escalation approval",
+      "filter": "Kind:Application \"Volunteer state\":\"Awaiting escalation approval\"",
+      "number": 4
+    },
+    {
+      "id": "PVTV_lADOFHg4Xc4BpZWNzgMUIp0",
+      "name": "Awaiting reviewer",
+      "filter": "Kind:Application \"Volunteer state\":\"Awaiting reviewer\"",
+      "number": 5
+    },
+    {
+      "id": "PVTV_lADOFHg4Xc4BpZWNzgMUIp8",
+      "name": "Accepted and onboarding",
+      "filter": "Kind:Application \"Volunteer state\":Accepted,Onboarding,\"Invitation requested\",\"Invitation sent\",\"Invitation accepted\"",
+      "number": 6
+    },
+    {
+      "id": "PVTV_lADOFHg4Xc4BpZWNzgMUIqQ",
+      "name": "Active placements",
+      "filter": "Kind:Application \"Volunteer state\":Active",
+      "number": 7
+    },
+    {
+      "id": "PVTV_lADOFHg4Xc4BpZWNzgMUIqg",
+      "name": "Closed applications",
+      "filter": "Kind:Application \"Volunteer state\":Closed,Declined,Withdrawn",
+      "number": 8
+    },
+    {
+      "id": "PVTV_lADOFHg4Xc4BpZWNzgMUIqo",
+      "name": "Open opportunities",
+      "filter": "Kind:Opportunity -Readiness:Filled",
+      "number": 9
+    },
+    {
+      "id": "PVTV_lADOFHg4Xc4BpZWNzgMUIqw",
+      "name": "Priority staffing needs",
+      "filter": "Kind:Opportunity \"Staffing need\":\"Leader needed\",\"Maintainer needed\",\"Confirmed vacancy\"",
+      "number": 10
+    },
+    {
+      "id": "PVTV_lADOFHg4Xc4BpZWNzgMUIrU",
+      "name": "Missing leadership or onboarding",
+      "filter": "Kind:Opportunity Readiness:\"Capacity unknown\"",
+      "number": 11
+    }
+  ]
+}
