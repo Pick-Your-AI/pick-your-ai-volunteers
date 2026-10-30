@@ -47,6 +47,41 @@ def initial(applicant, route=None, referral_preference='ask_each_time'):
     return {'state': 'new', 'applicant': applicant, 'reviewer': route, 'visited': [route] if route else [], 'pending': None, 'history': [], 'events': [], 'referral_preference': referral_preference}
 
 
+def resolve_route(directory, policy, selections, now=None):
+    """Resolve only approved routes; membership and access never imply authority.
+
+    Conflicting multi-select routes require operator clarification. Lower roles
+    are only used automatically when a prior decision approved that fallback.
+    """
+    now = now or datetime.now(timezone.utc)
+    known = {r['id'] for kind in ('teams', 'repositories', 'projects', 'opportunities') for r in directory[kind]}
+    if not policy['enabled'] or not policy.get('approval_reference'):
+        return None, 'Decision authority not activated'
+    chosen = sorted(set(selections) & known)
+    routes = [policy.get('routes', {}).get(id) for id in chosen]
+    routes = [route for route in routes if route]
+    if routes and any(route != routes[0] for route in routes[1:]):
+        return None, 'Selected interests have different routes; operator clarification required'
+    route = routes[0] if routes else []
+    for index, step in enumerate(route):
+        if not step.get('approval_reference') or (index and not step.get('fallback_approved')):
+            continue
+        try:
+            _available(policy, step['reviewer'], now)
+            return step['reviewer'], 'Approved ' + step['role'] + ' route'
+        except ValueError:
+            continue
+    # The empty route is not a missing leader: an explicit mandate must cover it.
+    fallback = policy['fallbacks'].get('empty') if not route else None
+    if fallback:
+        try:
+            _available(policy, fallback, now)
+            return fallback, 'Explicitly approved empty-route fallback'
+        except ValueError:
+            pass
+    return None, 'No available approved route; request escalation authorization'
+
+
 def transition(current, event, policy, now=None):
     """Actor and source come from trusted GitHub metadata, never user JSON."""
     now = now or datetime.now(timezone.utc)

@@ -6,7 +6,7 @@ Fresh VM and GitHub readback results are recorded here after execution. A passin
 
 ## Executed 2026-10-30
 
-A newly created isolated Ubuntu 24.04.5 KVM guest ran Python 3.12 with dependencies in a fresh virtual environment: **28 tests passed**, canonical validation passed for **134 records**, and generated forms/export consistency passed. Tests include the actual HTTP adapter under a mocked GitHub transport; they do not create public fake applicants. The [verification manifest](../data/verification.v1.json) binds tested source file hashes.
+A newly created isolated Ubuntu 24.04.5 KVM guest ran Python 3.12 with dependencies in a fresh virtual environment: **30 tests passed**, canonical validation passed for **134 records**, and generated forms/export consistency passed. Tests include the actual HTTP adapter under a mocked GitHub transport; they do not create public fake applicants. The [verification manifest](../data/verification.v1.json) binds tested source file hashes.
 
 The initial Hyper-V guest attempts exposed boot/connectivity problems and were not counted as passes. The separate clean KVM guest completed the recorded checks. No WSL restart or termination was used.
 

@@ -17,3 +17,5 @@ Project views should show: New applications; Awaiting information; Awaiting esca
 The worker checkpoints IDs of both accepted and rejected commands so a later authority change cannot silently replay an old rejected request. It replays unseen commands in API order after GitHub concurrency replaces a pending run. Rejected commands expose no input in logs.
 
 The manual Project workflow is present but cannot run successfully until `VOLUNTEER_PROJECT_TOKEN` is provisioned. No credential was copied from an operator account. Use a dedicated, narrowly scoped, approved credential; the CLI synchronizer already works with an authorized operator session. This is a manual workflow, not a scheduled automation.
+
+Route records use `role`, `reviewer`, `approval_reference` and `fallback_approved`, with roles in the documented sequence. Give each selected entity an approved route or leave it unresolved. Correct a rejected or edited command using a new comment; processed IDs are not replayed.

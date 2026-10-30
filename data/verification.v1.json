@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "verified_at": "2026-10-30T05:09:08.163992+00:00",
   "environment": "Fresh isolated Ubuntu 24.04.5 KVM guest; Python 3.12",
-  "tests": 28,
+  "tests": 30,
   "result": "passed",
   "checks": [
     "schema and relationships",
@@ -12,12 +12,12 @@
   ],
   "source_sha256": {
     "scripts\\generate.py": "eea54a36a6b1fe71d5df9faa7db0f46c0f82eddfe1016a2fb2849226da2346c3",
-    "scripts\\github_intake.py": "2febba8dafa56cf9ec27f07fd065bce6a5f257c26bc8afc24c365f863b2c181a",
-    "scripts\\program.py": "903d8917e0b77c6be87cf62ecf2d6961de42691a2d5fdd8895ca7a173b9e9d69",
+    "scripts\\github_intake.py": "6a137f29a3dbe33540976f64d35990221fe583c68b1d6a0c49b2521781e365dd",
+    "scripts\\program.py": "be6cdb250beee7a939ae0a5476ad61ce98031a21c939e1642fc7e7c43e67e681",
     "scripts\\project_sync.py": "331ea0f2bae2bf84fb5cacd37e0e11ba2478884c6319a0390210a72da5dd03ba",
-    "scripts\\validate.py": "a714039c8881ce9f44d7d29d03b9946abc322a6b77c38b6003ac0730155faf33",
-    "tests\\test_intake.py": "d1fe673ac8504c14b901f69e1b1ebdd81572cff2b7e05b137b47d0e4610b254a",
-    "tests\\test_program.py": "8d7fe58532f99a8c00853b4552117d2899b8e40ca2808734820edb3782040bc3"
+    "scripts\\validate.py": "72849a8de4c3aa6ee9babdfb3dbb2d2faeed153988bdd44dafc3ace483ebf5ea",
+    "tests\\test_intake.py": "94079e5c850588a99fce1ede5751cc288d67877d6b7856ea355ffcb40c0c6028",
+    "tests\\test_program.py": "119984fd9305602c316ae5471df3e87fb65b581ac4793fce651c85f001f63079"
   },
   "not_verified": [
     "live default-branch intake before merge",

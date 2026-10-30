@@ -32,6 +32,13 @@ def validate():
             assert r['approval_reference'] and r['availability'] in ('available', 'absent', 'unknown', 'conflict')
             assert set(r['destinations'] + r['escalation_approvers']) <= policy['reviewers'].keys()
         assert set(policy['fallbacks'].values()) <= policy['reviewers'].keys()
+        order = ['team_reviewer', 'repository_maintainer', 'repository_lead', 'parent_team_reviewer', 'organization_fallback']
+        for scope, route in policy.get('routes', {}).items():
+            assert scope in ids, 'Unknown routing scope'
+            ranks = [order.index(step['role']) for step in route]
+            assert ranks == sorted(ranks), 'Routing roles out of order'
+            assert len({step['reviewer'] for step in route}) == len(route), 'Repeated routing recipient'
+            assert all(step['reviewer'] in policy['reviewers'] and step['approval_reference'] for step in route)
     else:
         assert not policy['reviewers'] and not policy['fallbacks'], 'Inactive policy must not imply appointments'
     # Prevent accidentally exporting internal-directory or application fields.

@@ -19,6 +19,7 @@ class Intake(unittest.TestCase):
         self.root = Path(self.tmp.name)
         (self.root / 'data').mkdir()
         (self.root / 'data/authority.v1.json').write_text(json.dumps({'enabled': False, 'approval_reference': None, 'reviewers': {}, 'fallbacks': {}}))
+        (self.root / 'data/directory.v1.json').write_text(json.dumps({k: [] for k in ('teams', 'repositories', 'projects', 'opportunities')}))
         self.issue = {'number': 1, 'user': {'login': 'synthetic-applicant'}, 'labels': [{'name': 'type:application'}], 'body': '### Referral preference\n\nDo not refer me'}
         self.comments = []
         self.writes = []

@@ -7,7 +7,7 @@ import unittest
 from datetime import datetime, timezone
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from program import initial, transition, recommend, public_export
+from program import initial, transition, recommend, public_export, resolve_route
 from github_intake import read_ledger, MARKER
 from generate import artifacts
 
@@ -160,6 +160,23 @@ class Directory(unittest.TestCase):
         forms = artifacts(self.d)
         self.assertIn(self.o['id'], forms['.github/ISSUE_TEMPLATE/application.yml'])
         self.assertNotIn('must not export', forms['public/directory.v1.json'])
+
+    def test_route_resolution_requires_explicit_fallback_approval(self):
+        p = policy()
+        p['reviewers']['reviewer-a']['availability'] = 'absent'
+        route = [{'role': 'team_reviewer', 'reviewer': 'reviewer-a', 'approval_reference': 'synthetic'}, {'role': 'repository_maintainer', 'reviewer': 'reviewer-b', 'approval_reference': 'synthetic', 'fallback_approved': False}]
+        p['routes'] = {self.o['id']: route}
+        self.assertIsNone(resolve_route(self.d, p, [self.o['id']], NOW)[0])
+        route[1]['fallback_approved'] = True
+        self.assertEqual(resolve_route(self.d, p, [self.o['id']], NOW)[0], 'reviewer-b')
+
+    def test_route_resolution_empty_and_ambiguous(self):
+        p = policy()
+        self.assertEqual(resolve_route(self.d, p, [], NOW)[0], 'reviewer-a')
+        p['fallbacks'] = {}
+        self.assertIsNone(resolve_route(self.d, p, [], NOW)[0])
+        p['routes'] = {self.o['id']: [{'reviewer': 'reviewer-a'}], self.d['teams'][0]['id']: [{'reviewer': 'reviewer-b'}]}
+        self.assertIsNone(resolve_route(self.d, p, list(p['routes']), NOW)[0])
 
 
 if __name__ == '__main__':

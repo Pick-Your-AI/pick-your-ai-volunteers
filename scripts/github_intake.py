@@ -1,10 +1,11 @@
 """Runs on trusted default-branch issue_comment workflow; never executes issue text."""
 import json
 import os
+import re
 from pathlib import Path
 import urllib.request
 import urllib.error
-from program import initial, transition
+from program import initial, transition, resolve_route
 
 ROOT = Path(__file__).resolve().parents[1]
 MARKER = '<!-- volunteer-ledger:v1 -->'
@@ -56,9 +57,17 @@ def run():
         if not state['history']:
             # One bootstrap marker per issue. A retry observes the previous marker.
             if not any(c['body'].startswith(MARKER) and c['user']['login'] == 'github-actions[bot]' for c in all_comments):
+                directory = json.loads((ROOT / 'data/directory.v1.json').read_text(encoding='utf-8'))
+                known = {r['id'] for kind in ('teams', 'repositories', 'projects', 'opportunities') for r in directory[kind]}
+                selected = set(re.findall(r'[A-Za-z0-9_-]+', issue.get('body') or '')) & known
+                reviewer, reason = resolve_route(directory, policy, selected)
+                state = initial(issue['user']['login'], reviewer)
+                state['routing_reason'] = reason
                 if '### Referral preference\n\nDo not refer me' in (issue.get('body') or '').replace('\r\n', '\n'):
                     state['referral_preference'] = 'do_not_refer'
                 api(f'repos/{repo}/issues/{number}/comments', {'body': MARKER + '\n' + json.dumps(state, sort_keys=True)})
+                if reviewer:
+                    api(f'repos/{repo}/issues/{number}', {'assignees': [reviewer]}, 'PATCH')
         return
     updated = state
     seen = set(state.get('processed', state['events']))
