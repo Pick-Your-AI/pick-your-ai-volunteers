@@ -1,0 +1,72 @@
+{
+ "config_sha256": "bd2386d654a06b2602ae9a379db613a44b7718a69e59e596c1aa59b3a6519e56",
+ "fingerprint": "9d23de5d347edcbf8d049ff12aad0a47f7b9ccc44afd9b55024836ecf90c0c01",
+ "inputs": {
+  "description": "Volunteer directory, public-safe intake, placement review and onboarding for Pick Your AI. Planned nonprofit; legal status unverified.",
+  "icon_sha256": "bd8d294fb42f30a6ff6b4194aa1e7f42946f669bb410345cc26170912781c131",
+  "language": null,
+  "license": null,
+  "override_sha256": "e63dac3f2b0640c56784217991ee69b76e12ff7b47697a7e466710faeaf0d1fb",
+  "owner": "Pick-Your-AI",
+  "repo": "pick-your-ai-volunteers",
+  "topics": [],
+  "type": "workspace",
+  "visibility": "public"
+ },
+ "outputs": {
+  "banner.png": {
+   "bytes": 84465,
+   "chips": [
+    {
+     "box": [
+      520,
+      240.1,
+      196.0,
+      38
+     ],
+     "kind": "key",
+     "source": "override",
+     "text": "Planned nonprofit"
+    },
+    {
+     "box": [
+      728.0,
+      240.1,
+      199.7,
+      38
+     ],
+     "kind": "attr",
+     "source": "override",
+     "text": "Public-safe intake"
+    },
+    {
+     "box": [
+      939.7,
+      240.1,
+      195.7,
+      38
+     ],
+     "kind": "attr",
+     "source": "override",
+     "text": "Placement review"
+    }
+   ],
+   "icon_source": "override",
+   "px": [
+    2560,
+    720
+   ],
+   "repository_id": 1439294441,
+   "scale": 2,
+   "sha256": "92f0e6e2c9bb10fdeb43a4e35ee7b7c2f23fb2fda8f69b3cd907f5b895c99d1d"
+  },
+  "card.svg": {
+   "bytes": 24653,
+   "repository_id": 1439294441,
+   "sha256": "998cd3ba6dc84b3712d659ff1a66533d44e46941766fe6cd1c67f12c219aaa5e"
+  }
+ },
+ "schema": 1,
+ "skill_version": "1.0.0",
+ "standard": "ct-std-v1"
+}
