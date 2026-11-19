@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "action",
+    "reason"
+  ],
+  "properties": {
+    "action": {
+      "enum": [
+        "accept",
+        "decline",
+        "request_information",
+        "refer",
+        "agree_referral",
+        "decline_referral",
+        "request_escalation",
+        "approve_escalation",
+        "reject_escalation",
+        "withdraw",
+        "begin_onboarding",
+        "request_invitation",
+        "record_invitation_sent",
+        "record_invitation_accepted",
+        "complete_onboarding",
+        "close"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "destination": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "receipt": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://",
+      "maxLength": 2048
+    },
+    "unavailability": {
+      "enum": [
+        "no_designated_reviewer",
+        "recorded_absence",
+        "conflict_of_interest",
+        "response_period_expired"
+      ]
+    },
+    "proposal_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "enum": [
+              "record_invitation_sent",
+              "record_invitation_accepted"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "receipt"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "enum": [
+              "refer",
+              "request_escalation"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "destination"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "const": "request_escalation"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "unavailability"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "enum": [
+              "agree_referral",
+              "decline_referral",
+              "approve_escalation",
+              "reject_escalation"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "proposal_id"
+        ]
+      }
+    }
+  ],
+  "title": "Volunteer decision command v2"
+}

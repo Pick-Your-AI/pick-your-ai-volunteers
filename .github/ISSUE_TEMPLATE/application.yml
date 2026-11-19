@@ -1,0 +1,232 @@
+name: Volunteer application / expression of interest
+description: Public-safe volunteer interests and support needs
+title: '[Application] '
+labels:
+- type:application
+body:
+- type: markdown
+  attributes:
+    value: '**Public submission:** your issue, edits, comments and status are visible to everyone. Use only your GitHub identity
+      and public-safe information. Do not include legal name, email, phone, address, credentials, health or other sensitive
+      details. There is no confidential intake or guaranteed deletion from history. Acceptance does not grant access.'
+- type: dropdown
+  id: opportunities
+  attributes:
+    label: Preferred opportunity
+    options:
+    - Help me find where I am most useful
+    - No preference
+    - op-lead-maintainers-ai-builder — Lead Maintainers - AI Builder — leadership interest
+    - op-lead-maintainers-ai-papers-index — Lead Maintainers - AI Papers & Index — leadership interest
+    - op-lead-maintainers-catalog-pipeline — Lead Maintainers - Catalog Pipeline — leadership interest
+    - op-lead-maintainers-datasets-benchmarks — Lead Maintainers - Datasets & Benchmarks — leadership interest
+    - op-education — Education — expression of interest
+    - op-funding-grants-sustainability — Funding, Grants & Sustainability — expression of interest
+    - op-organization-maintainers — Organization Maintainers — expression of interest
+    multiple: true
+  validations:
+    required: false
+- type: dropdown
+  id: teams
+  attributes:
+    label: Preferred team
+    options:
+    - Help me find where I am most useful
+    - No preference
+    - team-20398335 — AI Applications
+    - team-20423761 — AI Applications - Developer & Data Tools
+    - team-20423765 — AI Applications - Enterprise & Industry Applications
+    - team-20423759 — AI Applications - Personal Productivity & Creative Tools
+    - team-20423767 — AI Applications - Product Verification & Comparisons
+    - team-20184179 — AI Builder
+    - team-20423826 — AI Builder - Compatibility & Cost
+    - team-20423823 — AI Builder - Knowledge & Retrieval
+    - team-20423822 — AI Builder - Models & Providers
+    - team-20423825 — AI Builder - Training & Fine-Tuning
+    - team-20423819 — AI Builder - Workloads & Architecture
+    - team-20398339 — AI Papers & Index
+    - team-20423773 — AI Papers & Index - Evidence & Reproducibility
+    - team-20423774 — AI Papers & Index - Publication Rights & Editorial Review
+    - team-20423768 — AI Papers & Index - Scholarly Discovery & Indexing
+    - team-20423770 — AI Papers & Index - Taxonomy & Knowledge Graph
+    - team-20166812 — Android
+    - team-20423806 — Android - Backend & Integrations
+    - team-20423808 — Android - Platform & Quality
+    - team-20423804 — Android - UI/UX
+    - team-20166920 — Apple/iOS
+    - team-20423801 — Apple/iOS - Backend & Integrations
+    - team-20423803 — Apple/iOS - Platform & Quality
+    - team-20423800 — Apple/iOS - UI/UX
+    - team-20398347 — Catalog Pipeline
+    - team-20423781 — Catalog Pipeline - Identity & Normalization
+    - team-20423784 — Catalog Pipeline - Publishing & Consumer Integration
+    - team-20423777 — Catalog Pipeline - Sources & Connectors
+    - team-20423782 — Catalog Pipeline - Validation & Freshness
+    - team-20421513 — Cloud Agents
+    - team-20423751 — Cloud Agents - Deployment & Observability
+    - team-20423744 — Cloud Agents - Provider Integrations
+    - team-20423746 — Cloud Agents - Runtime & Orchestration
+    - team-20423749 — Cloud Agents - Security & Evaluation
+    - team-20423747 — Cloud Agents - Tools, MCP & Memory
+    - team-20167030 — Contributor Leaderboard
+    - team-20423593 — Contributor Leaderboard - Backend & Metrics
+    - team-20423595 — Contributor Leaderboard - Platform & Integrity
+    - team-20423589 — Contributor Leaderboard - UI/UX
+    - team-20398330 — Datasets & Benchmarks
+    - team-20423758 — Datasets & Benchmarks - Benchmarks & Evaluation Integrity
+    - team-20423757 — Datasets & Benchmarks - Dataset Quality & Documentation
+    - team-20423752 — Datasets & Benchmarks - Discovery & Cataloging
+    - team-20423754 — Datasets & Benchmarks - Licensing & Provenance
+    - team-20140728 — Early Contributors
+    - team-20422276 — Education
+    - team-20423933 — Education - Curriculum & Learning Paths
+    - team-20423950 — Education - Learner Support & Feedback
+    - team-20423945 — Education - Learning Resources
+    - team-20423936 — Education - Tutorials & Guides
+    - team-20423941 — Education - Workshops & Training
+    - team-20184167 — Funding, Grants & Sustainability
+    - team-20423795 — Funding, Grants & Sustainability - Donated Compute & Services
+    - team-20423786 — Funding, Grants & Sustainability - Grants & Applications
+    - team-20423798 — Funding, Grants & Sustainability - Nonprofit & Financial Sustainability
+    - team-20423793 — Funding, Grants & Sustainability - Sponsorships & Partnerships
+    - team-20422308 — GPU & Compute
+    - team-20422305 — Hardware & Infrastructure
+    - team-20422309 — Hosting & Storage
+    - team-20422310 — Inference Engines
+    - team-20421771 — Lead Maintainers - AI Applications
+    - team-20421768 — Lead Maintainers - AI Builder
+    - team-20421770 — Lead Maintainers - AI Papers & Index
+    - team-20423992 — Lead Maintainers - Android
+    - team-20424010 — Lead Maintainers - Apple/iOS
+    - team-20421773 — Lead Maintainers - Catalog Pipeline
+    - team-20421514 — Lead Maintainers - Cloud Agents
+    - team-20422096 — Lead Maintainers - Contributor Leaderboard
+    - team-20421774 — Lead Maintainers - Datasets & Benchmarks
+    - team-20422282 — Lead Maintainers - Education
+    - team-20284775 — Lead Maintainers - Funding, Grants & Sustainability
+    - team-20422306 — Lead Maintainers - Hardware & Infrastructure
+    - team-20423968 — Lead Maintainers - Main Website
+    - team-20398066 — Lead Maintainers - Market & Competitive Intelligence
+    - team-20191293 — Lead Maintainers - Mobile Apps
+    - team-20191279 — Lead Maintainers - Research
+    - team-20172997 — Lead Maintainers - Websites
+    - team-20166984 — Main Website
+    - team-20423580 — Main Website - Backend & Integrations
+    - team-20423583 — Main Website - Platform & Quality
+    - team-20423578 — Main Website - UI/UX
+    - team-20184157 — Market & Competitive Intelligence
+    - team-20423809 — Market & Competitive Intelligence - Competitors & Positioning
+    - team-20423812 — Market & Competitive Intelligence - Customers & Demand
+    - team-20423813 — Market & Competitive Intelligence - Pricing & Business Models
+    - team-20423815 — Market & Competitive Intelligence - Product Strategy & Validation
+    - team-20182744 — Mobile Apps
+    - team-20182720 — Organization Maintainers
+    - team-20136531 — Research
+    - team-20198473 — Research Maintainers
+    - team-20424197 — Review Leads
+    - team-20169020 — Websites
+    multiple: true
+  validations:
+    required: false
+- type: dropdown
+  id: repositories
+  attributes:
+    label: Preferred repository
+    options:
+    - Help me find where I am most useful
+    - No preference
+    - repo-1421934086 — pick-your-ai-research
+    - repo-1422014674 — .github
+    - repo-1422238606 — pick-your-ai-website
+    - repo-1422874501 — pick-your-ai-leaderboard
+    - repo-1422897313 — pick-your-ai-android
+    - repo-1422897390 — pick-your-ai-apple
+    - repo-1424960984 — pick-your-ai-sustainability
+    - repo-1430403712 — pick-your-ai-applications
+    - repo-1430404173 — pick-your-ai-papers
+    - repo-1430404474 — pick-your-ai-catalog-pipeline
+    - repo-1431120964 — pick-your-ai-datasets
+    - repo-1437739257 — pick-your-ai-market
+    - repo-1439072266 — pick-your-ai-cloud-agents
+    - repo-1439194215 — pick-your-ai-education
+    - repo-1439241566 — Knowledge-Base
+    - repo-1439294441 — pick-your-ai-volunteers
+    multiple: true
+  validations:
+    required: false
+- type: dropdown
+  id: projects
+  attributes:
+    label: Preferred Project
+    options:
+    - Help me find where I am most useful
+    - No preference
+    - project-PVT_kwDOFHg4Xc4BpYpe — Pick Your AI — Community — Education
+    - project-PVT_kwDOFHg4Xc4BpXxK — Pick Your AI — Research — Cloud Agents
+    - project-PVT_kwDOFHg4Xc4BoZsU — Pick Your AI — Research — Datasets & Benchmarks
+    - project-PVT_kwDOFHg4Xc4BoUH6 — Pick Your AI — Research — AI Applications
+    - project-PVT_kwDOFHg4Xc4BoUHz — Pick Your AI — Research — AI Papers & Index
+    - project-PVT_kwDOFHg4Xc4BoUHM — Pick Your AI — Development — Catalog Pipeline
+    - project-PVT_kwDOFHg4Xc4Bnqgs — Pick Your AI — Operations — Funding, Grants & Sustainability
+    - project-PVT_kwDOFHg4Xc4BnbgH — Pick Your AI — Development — Contributor Leaderboard
+    - project-PVT_kwDOFHg4Xc4BnbQs — Pick Your AI — Development — Apple/iOS
+    - project-PVT_kwDOFHg4Xc4BnbMJ — Pick Your AI — Development — Android
+    - project-PVT_kwDOFHg4Xc4BnX2e — Pick Your AI — Development — Main Website
+    - project-PVT_kwDOFHg4Xc4BnViW — Pick Your AI — Research — Market & Competitive Intelligence
+    - project-PVT_kwDOFHg4Xc4BnUon — Pick Your AI — Research — AI Builder
+    - project-PVT_kwDOFHg4Xc4BpZWN — Pick Your AI — Volunteer Operations
+    multiple: true
+  validations:
+    required: false
+- type: dropdown
+  id: role
+  attributes:
+    label: Desired role
+    options:
+    - Help me choose
+    - role-research — Evidence research
+    - role-education — Education and documentation
+    - role-maintainer — Specialty lead maintainer
+    - role-operations — Volunteer operations support
+  validations:
+    required: true
+- type: textarea
+  id: alternatives
+  attributes:
+    label: Alternative interests and useful skills
+    description: Mention public work examples only if you want to share them.
+  validations:
+    required: true
+- type: textarea
+  id: availability
+  attributes:
+    label: Availability
+    description: Approximate time and preferred pace, or to be agreed; no personal schedule details needed.
+  validations:
+    required: true
+- type: textarea
+  id: mentoring
+  attributes:
+    label: Mentoring and onboarding support
+    description: What support would help? Do not include sensitive personal information.
+  validations:
+    required: true
+- type: dropdown
+  id: referral
+  attributes:
+    label: Referral preference
+    options:
+    - Ask me before each placement change
+    - Do not refer me
+  validations:
+    required: true
+- type: checkboxes
+  id: consent
+  attributes:
+    label: Visibility consent
+    options:
+    - label: I understand this is public and consent to public application review. Each proposed placement change needs my
+        agreement.
+      required: true
+  validations:
+    required: false

@@ -1,0 +1,3237 @@
+{
+  "schema_version": "1.0.0",
+  "verified_at": "2026-10-30T05:00:41.518730+00:00",
+  "teams": [
+    {
+      "kind": "team",
+      "id": "team-20398335",
+      "name": "AI Applications",
+      "description": "Research team for end-user and enterprise AI applications, products and services (Project #10, pick-your-ai-applications).",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-applications",
+        "id": 20398335
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/ai-applications"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1421934086",
+        "repo-1430403712"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423761",
+      "name": "AI Applications - Developer & Data Tools",
+      "description": "Software-development, data-analysis and process tooling for technical users.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-applications-developer-data-tools",
+        "id": 20423761
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/ai-applications-developer-data-tools"
+      ],
+      "parent_team_id": "team-20398335",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423765",
+      "name": "AI Applications - Enterprise & Industry Applications",
+      "description": "Business functions, customer operations, professional domains and industry-specific products.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-applications-enterprise-industry-applications",
+        "id": 20423765
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/ai-applications-enterprise-industry-applications"
+      ],
+      "parent_team_id": "team-20398335",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423759",
+      "name": "AI Applications - Personal Productivity & Creative Tools",
+      "description": "End-user productivity, personal/assistive tools and creative media applications.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-applications-personal-productivity-creative-tools",
+        "id": 20423759
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/ai-applications-personal-productivity-creative-tools"
+      ],
+      "parent_team_id": "team-20398335",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423767",
+      "name": "AI Applications - Product Verification & Comparisons",
+      "description": "Product identity, source rights, coverage maintenance, suitability comparisons and accepted publication handoffs.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-applications-product-verification-comparisons",
+        "id": 20423767
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/ai-applications-product-verification-comparisons"
+      ],
+      "parent_team_id": "team-20398335",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20184179",
+      "name": "AI Builder",
+      "description": "Research team focused on building tools, applications, and data pipelines that put Pick Your AI research into practice.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-builder",
+        "id": 20184179
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/ai-builder"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1421934086"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423826",
+      "name": "AI Builder - Compatibility & Cost",
+      "description": "Cross-component constraints, shared contract review, supported combinations and scenario cost semantics.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-builder-compatibility-cost",
+        "id": 20423826
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/ai-builder-compatibility-cost"
+      ],
+      "parent_team_id": "team-20184179",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423823",
+      "name": "AI Builder - Knowledge & Retrieval",
+      "description": "Knowledge sources, ingestion, retrieval, embeddings and retrieval storage semantics.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-builder-knowledge-retrieval",
+        "id": 20423823
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/ai-builder-knowledge-retrieval"
+      ],
+      "parent_team_id": "team-20184179",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423822",
+      "name": "AI Builder - Models & Providers",
+      "description": "Model capabilities, model/provider offerings, context limits and selection constraints.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-builder-models-providers",
+        "id": 20423822
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/ai-builder-models-providers"
+      ],
+      "parent_team_id": "team-20184179",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423825",
+      "name": "AI Builder - Training & Fine-Tuning",
+      "description": "Training and adaptation approaches, data requirements, resource needs and evaluation handoffs.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-builder-training-fine-tuning",
+        "id": 20423825
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/ai-builder-training-fine-tuning"
+      ],
+      "parent_team_id": "team-20184179",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423819",
+      "name": "AI Builder - Workloads & Architecture",
+      "description": "Workload requirements, deployment modes and end-to-end stack design. Agent and hardware specifics remain with their specialist areas.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-builder-workloads-architecture",
+        "id": 20423819
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/ai-builder-workloads-architecture"
+      ],
+      "parent_team_id": "team-20184179",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20398339",
+      "name": "AI Papers & Index",
+      "description": "Research team for AI literature, scholarly metadata, taxonomy, reproducibility and knowledge-graph relationships (Project #9, pick-your-ai-papers).",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-papers-index",
+        "id": 20398339
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/ai-papers-index"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1421934086",
+        "repo-1430404173"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423773",
+      "name": "AI Papers & Index - Evidence & Reproducibility",
+      "description": "Claim-level evidence, artifact links, independent reproduction and coverage/bias assessment.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-papers-index-evidence-reproducibility",
+        "id": 20423773
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/ai-papers-index-evidence-reproducibility"
+      ],
+      "parent_team_id": "team-20398339",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423774",
+      "name": "AI Papers & Index - Publication Rights & Editorial Review",
+      "description": "Source-use rights, corrections, retractions, editorial review and publication acceptance.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-papers-index-publication-rights-editorial-review",
+        "id": 20423774
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/ai-papers-index-publication-rights-editorial-review"
+      ],
+      "parent_team_id": "team-20398339",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423768",
+      "name": "AI Papers & Index - Scholarly Discovery & Indexing",
+      "description": "Scholarly source discovery, bibliographic identity, citations, acquisition interfaces and searchable indexing.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-papers-index-scholarly-discovery-indexing",
+        "id": 20423768
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/ai-papers-index-scholarly-discovery-indexing"
+      ],
+      "parent_team_id": "team-20398339",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423770",
+      "name": "AI Papers & Index - Taxonomy & Knowledge Graph",
+      "description": "Scientific taxonomy, authors and organizations, method lineage, schemas and graph relationships.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-papers-index-taxonomy-knowledge-graph",
+        "id": 20423770
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/ai-papers-index-taxonomy-knowledge-graph"
+      ],
+      "parent_team_id": "team-20398339",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20166812",
+      "name": "Android",
+      "description": "Contributors building and maintaining the Pick Your AI Android app.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/android",
+        "id": 20166812
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/android"
+      ],
+      "parent_team_id": "team-20182744",
+      "repository_ids": [
+        "repo-1422897313"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423806",
+      "name": "Android - Backend & Integrations",
+      "description": "Shared API, catalog data, authentication and saved-build integration; canonical services retain their existing owners.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/android-backend-integrations",
+        "id": 20423806
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/android-backend-integrations"
+      ],
+      "parent_team_id": "team-20166812",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423808",
+      "name": "Android - Platform & Quality",
+      "description": "App foundation, build and release pipelines, security, performance, testing and store readiness.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/android-platform-quality",
+        "id": 20423808
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/android-platform-quality"
+      ],
+      "parent_team_id": "team-20166812",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423804",
+      "name": "Android - UI/UX",
+      "description": "Native app experience, interaction design, accessibility and frontend presentation.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/android-ui-ux",
+        "id": 20423804
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/android-ui-ux"
+      ],
+      "parent_team_id": "team-20166812",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20166920",
+      "name": "Apple/iOS",
+      "description": "Contributors building and maintaining the Pick Your AI Apple iOS app.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/apple-ios",
+        "id": 20166920
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/apple-ios"
+      ],
+      "parent_team_id": "team-20182744",
+      "repository_ids": [
+        "repo-1422897390"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423801",
+      "name": "Apple/iOS - Backend & Integrations",
+      "description": "Shared API, catalog data, authentication and saved-build integration; canonical services retain their existing owners.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/apple-ios-backend-integrations",
+        "id": 20423801
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/apple-ios-backend-integrations"
+      ],
+      "parent_team_id": "team-20166920",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423803",
+      "name": "Apple/iOS - Platform & Quality",
+      "description": "App foundation, build and release pipelines, security, performance, testing and store readiness.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/apple-ios-platform-quality",
+        "id": 20423803
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/apple-ios-platform-quality"
+      ],
+      "parent_team_id": "team-20166920",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423800",
+      "name": "Apple/iOS - UI/UX",
+      "description": "Native app experience, interaction design, accessibility and frontend presentation.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/apple-ios-ui-ux",
+        "id": 20423800
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/apple-ios-ui-ux"
+      ],
+      "parent_team_id": "team-20166920",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20398347",
+      "name": "Catalog Pipeline",
+      "description": "Shared AI research catalog ingestion, source governance, evidence review and publishing (Project #8, pick-your-ai-catalog-pipeline).",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/catalog-pipeline",
+        "id": 20398347
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/catalog-pipeline"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1421934086",
+        "repo-1430404474"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423781",
+      "name": "Catalog Pipeline - Identity & Normalization",
+      "description": "Identity resolution, canonical mappings, normalization and structural contract conformance. Domain teams retain semantic authority.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/catalog-pipeline-identity-normalization",
+        "id": 20423781
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/catalog-pipeline-identity-normalization"
+      ],
+      "parent_team_id": "team-20398347",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423784",
+      "name": "Catalog Pipeline - Publishing & Consumer Integration",
+      "description": "Immutable releases, withdrawal propagation and delivery to website/mobile or other approved consumers.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/catalog-pipeline-publishing-consumer-integration",
+        "id": 20423784
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/catalog-pipeline-publishing-consumer-integration"
+      ],
+      "parent_team_id": "team-20398347",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423777",
+      "name": "Catalog Pipeline - Sources & Connectors",
+      "description": "Source permission checks, acquisition adapters and permitted connector execution.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/catalog-pipeline-sources-connectors",
+        "id": 20423777
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/catalog-pipeline-sources-connectors"
+      ],
+      "parent_team_id": "team-20398347",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423782",
+      "name": "Catalog Pipeline - Validation & Freshness",
+      "description": "Evidence tracking, quarantine, review workflows, quality checks and change/freshness detection.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/catalog-pipeline-validation-freshness",
+        "id": 20423782
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/catalog-pipeline-validation-freshness"
+      ],
+      "parent_team_id": "team-20398347",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20421513",
+      "name": "Cloud Agents",
+      "description": "Research team for cloud agent platforms, SDKs, runtimes and architecture.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents",
+        "id": 20421513
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1439072266"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423751",
+      "name": "Cloud Agents - Deployment & Observability",
+      "description": "Packaging, deployment architecture, monitoring, diagnostics and operating constraints. No infrastructure deployment is authorized by this taxonomy.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents-deployment-observability",
+        "id": 20423751
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents-deployment-observability"
+      ],
+      "parent_team_id": "team-20421513",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423744",
+      "name": "Cloud Agents - Provider Integrations",
+      "description": "Provider-specific agent APIs and adapters. AWS, OpenAI, Anthropic and portable/open-source frameworks begin as workstreams inside this lane.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents-provider-integrations",
+        "id": 20423744
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents-provider-integrations"
+      ],
+      "parent_team_id": "team-20421513",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423746",
+      "name": "Cloud Agents - Runtime & Orchestration",
+      "description": "Agent execution models, orchestration, state transitions, scheduling and runtime portability.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents-runtime-orchestration",
+        "id": 20423746
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents-runtime-orchestration"
+      ],
+      "parent_team_id": "team-20421513",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423749",
+      "name": "Cloud Agents - Security & Evaluation",
+      "description": "Agent trust boundaries, permissions, safety controls, evaluation design and supported-behavior evidence.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents-security-evaluation",
+        "id": 20423749
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents-security-evaluation"
+      ],
+      "parent_team_id": "team-20421513",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423747",
+      "name": "Cloud Agents - Tools, MCP & Memory",
+      "description": "Tool interfaces, MCP interoperability and agent memory integration; preserve canonical upstream research ownership.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents-tools-mcp-memory",
+        "id": 20423747
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents-tools-mcp-memory"
+      ],
+      "parent_team_id": "team-20421513",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20167030",
+      "name": "Contributor Leaderboard",
+      "description": "Contributors building and maintaining the Pick Your AI leaderboard website.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/contributor-leaderboard",
+        "id": 20167030
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/contributor-leaderboard"
+      ],
+      "parent_team_id": "team-20169020",
+      "repository_ids": [
+        "repo-1422874501"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423593",
+      "name": "Contributor Leaderboard - Backend & Metrics",
+      "description": "GitHub ingestion, event ledger and replay, contributor identity, metric calculation, ranking logic and read API contracts.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/contributor-leaderboard-backend-metrics",
+        "id": 20423593
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/contributor-leaderboard-backend-metrics"
+      ],
+      "parent_team_id": "team-20167030",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423595",
+      "name": "Contributor Leaderboard - Platform & Integrity",
+      "description": "Leaderboard CI, hosting, operations, security, privacy, abuse controls, moderation and quality verification.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/contributor-leaderboard-platform-integrity",
+        "id": 20423595
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/contributor-leaderboard-platform-integrity"
+      ],
+      "parent_team_id": "team-20167030",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423589",
+      "name": "Contributor Leaderboard - UI/UX",
+      "description": "Leaderboard boards, contributor profiles, live presentation, navigation, visual design and accessibility.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/contributor-leaderboard-ui-ux",
+        "id": 20423589
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/contributor-leaderboard-ui-ux"
+      ],
+      "parent_team_id": "team-20167030",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20398330",
+      "name": "Datasets & Benchmarks",
+      "description": "Research team for AI datasets and benchmarks: identity, versions, rights, provenance and evaluation integrity (Project #11, pick-your-ai-datasets).",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/datasets-benchmarks",
+        "id": 20398330
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/datasets-benchmarks"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1421934086",
+        "repo-1431120964"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423758",
+      "name": "Datasets & Benchmarks - Benchmarks & Evaluation Integrity",
+      "description": "Benchmark definitions, grading semantics, evaluation comparability and contamination/integrity evidence.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/datasets-benchmarks-benchmarks-evaluation-integrity",
+        "id": 20423758
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/datasets-benchmarks-benchmarks-evaluation-integrity"
+      ],
+      "parent_team_id": "team-20398330",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423757",
+      "name": "Datasets & Benchmarks - Dataset Quality & Documentation",
+      "description": "Quality, bias, documentation, source evidence, reproducibility and ongoing maintenance.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/datasets-benchmarks-dataset-quality-documentation",
+        "id": 20423757
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/datasets-benchmarks-dataset-quality-documentation"
+      ],
+      "parent_team_id": "team-20398330",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423752",
+      "name": "Datasets & Benchmarks - Discovery & Cataloging",
+      "description": "Source discovery, modality coverage, dataset identities/versions and directory/index integration.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/datasets-benchmarks-discovery-cataloging",
+        "id": 20423752
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/datasets-benchmarks-discovery-cataloging"
+      ],
+      "parent_team_id": "team-20398330",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423754",
+      "name": "Datasets & Benchmarks - Licensing & Provenance",
+      "description": "Access conditions, licenses, consent, usage rights and provenance needed to establish permitted use.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/datasets-benchmarks-licensing-provenance",
+        "id": 20423754
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/datasets-benchmarks-licensing-provenance"
+      ],
+      "parent_team_id": "team-20398330",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20140728",
+      "name": "Early Contributors",
+      "description": "Community contributors helping build Pick Your AI. Members can participate in discussions and contribute to projects across the organization.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/early-contributors",
+        "id": 20140728
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/early-contributors"
+      ],
+      "parent_team_id": null,
+      "repository_ids": [
+        "repo-1421934086",
+        "repo-1422238606",
+        "repo-1422874501",
+        "repo-1422897313",
+        "repo-1422897390"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20422276",
+      "name": "Education",
+      "description": "Training, learning resources, tutorials and educational materials for Pick Your AI contributors and users.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/education",
+        "id": 20422276
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/education"
+      ],
+      "parent_team_id": "team-20182720",
+      "repository_ids": [
+        "repo-1439194215"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423933",
+      "name": "Education - Curriculum & Learning Paths",
+      "description": "Structured curricula, learning objectives, progression and learning paths.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/education-curriculum-learning-paths",
+        "id": 20423933
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/education-curriculum-learning-paths"
+      ],
+      "parent_team_id": "team-20422276",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423950",
+      "name": "Education - Learner Support & Feedback",
+      "description": "Learner onboarding, questions, support and feedback on educational materials.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/education-learner-support-feedback",
+        "id": 20423950
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/education-learner-support-feedback"
+      ],
+      "parent_team_id": "team-20422276",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423945",
+      "name": "Education - Learning Resources",
+      "description": "Curated learning materials, references and educational resource discovery.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/education-learning-resources",
+        "id": 20423945
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/education-learning-resources"
+      ],
+      "parent_team_id": "team-20422276",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423936",
+      "name": "Education - Tutorials & Guides",
+      "description": "Hands-on tutorials, step-by-step guides and self-paced lessons.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/education-tutorials-guides",
+        "id": 20423936
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/education-tutorials-guides"
+      ],
+      "parent_team_id": "team-20422276",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423941",
+      "name": "Education - Workshops & Training",
+      "description": "Live and recorded workshops, training sessions and practical exercises.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/education-workshops-training",
+        "id": 20423941
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/education-workshops-training"
+      ],
+      "parent_team_id": "team-20422276",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20184167",
+      "name": "Funding, Grants & Sustainability",
+      "description": "Research team for funding, grants, and long-term sustainability planning for Pick Your AI.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/funding-grants-sustainability",
+        "id": 20184167
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/funding-grants-sustainability"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1421934086",
+        "repo-1424960984"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423795",
+      "name": "Funding, Grants & Sustainability - Donated Compute & Services",
+      "description": "In-kind compute, inference, hardware, software and service support, with usable-value and eligibility evidence.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/funding-grants-sustainability-donated-compute-services",
+        "id": 20423795
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/funding-grants-sustainability-donated-compute-services"
+      ],
+      "parent_team_id": "team-20184167",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423786",
+      "name": "Funding, Grants & Sustainability - Grants & Applications",
+      "description": "Grant discovery, eligibility research and application preparation. Submission requires separate authorization.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/funding-grants-sustainability-grants-applications",
+        "id": 20423786
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/funding-grants-sustainability-grants-applications"
+      ],
+      "parent_team_id": "team-20184167",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423798",
+      "name": "Funding, Grants & Sustainability - Nonprofit & Financial Sustainability",
+      "description": "Nonprofit readiness, financial planning, reporting obligations and long-term operating sustainability.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/funding-grants-sustainability-nonprofit-financial-sustainability",
+        "id": 20423798
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/funding-grants-sustainability-nonprofit-financial-sustainability"
+      ],
+      "parent_team_id": "team-20184167",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423793",
+      "name": "Funding, Grants & Sustainability - Sponsorships & Partnerships",
+      "description": "Sponsorship and institutional partnership research, fit and proposed agreements. Outreach remains separately authorized.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/funding-grants-sustainability-sponsorships-partnerships",
+        "id": 20423793
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/funding-grants-sustainability-sponsorships-partnerships"
+      ],
+      "parent_team_id": "team-20184167",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20422308",
+      "name": "GPU & Compute",
+      "description": "Hardware and infrastructure research for Pick Your AI. Builds on the existing T2 research; preserves existing decision records and issue assignments.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/gpu-compute",
+        "id": 20422308
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/gpu-compute"
+      ],
+      "parent_team_id": "team-20422305",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20422305",
+      "name": "Hardware & Infrastructure",
+      "description": "Hardware and infrastructure research for Pick Your AI. Builds on the existing T2 research; preserves existing decision records and issue assignments.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/hardware-infrastructure",
+        "id": 20422305
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/hardware-infrastructure"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1421934086"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20422309",
+      "name": "Hosting & Storage",
+      "description": "Hardware and infrastructure research for Pick Your AI. Builds on the existing T2 research; preserves existing decision records and issue assignments.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/hosting-storage",
+        "id": 20422309
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/hosting-storage"
+      ],
+      "parent_team_id": "team-20422305",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20422310",
+      "name": "Inference Engines",
+      "description": "Hardware and infrastructure research for Pick Your AI. Builds on the existing T2 research; preserves existing decision records and issue assignments.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/inference-engines",
+        "id": 20422310
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/inference-engines"
+      ],
+      "parent_team_id": "team-20422305",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20421771",
+      "name": "Lead Maintainers - AI Applications",
+      "description": "Lead maintainers for AI Applications. Repository administration is scoped to pick-your-ai-applications. Initial lead: CompleteDotTech.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-applications",
+        "id": 20421771
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-applications"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1430403712"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20421768",
+      "name": "Lead Maintainers - AI Builder",
+      "description": "Lead maintainers for builder. Repository administration is scoped to pick-your-ai-research. Initial lead: CompleteDotTech.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-builder",
+        "id": 20421768
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-builder"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1421934086"
+      ],
+      "project_ids": [],
+      "membership_observation": "empty",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20421770",
+      "name": "Lead Maintainers - AI Papers & Index",
+      "description": "Lead maintainers for ai-papers-index. Repository administration is scoped to pick-your-ai-papers. Initial lead: CompleteDotTech.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-papers-index",
+        "id": 20421770
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-papers-index"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1430404173"
+      ],
+      "project_ids": [],
+      "membership_observation": "empty",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423992",
+      "name": "Lead Maintainers - Android",
+      "description": "Lead maintainers for Android. Repository administration is scoped to pick-your-ai-android; coordinates with Lead Maintainers - Mobile Apps.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-android",
+        "id": 20423992
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-android"
+      ],
+      "parent_team_id": "team-20182744",
+      "repository_ids": [
+        "repo-1422897313"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20424010",
+      "name": "Lead Maintainers - Apple/iOS",
+      "description": "Lead maintainers for Apple/iOS. Repository administration is scoped to pick-your-ai-apple; coordinates with Lead Maintainers - Mobile Apps.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-apple-ios",
+        "id": 20424010
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-apple-ios"
+      ],
+      "parent_team_id": "team-20182744",
+      "repository_ids": [
+        "repo-1422897390"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20421773",
+      "name": "Lead Maintainers - Catalog Pipeline",
+      "description": "Lead maintainers for catalog-pipeline. Repository administration is scoped to pick-your-ai-catalog-pipeline. Initial lead: CompleteDotTech.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-catalog-pipeline",
+        "id": 20421773
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-catalog-pipeline"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1430404474"
+      ],
+      "project_ids": [],
+      "membership_observation": "empty",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20421514",
+      "name": "Lead Maintainers - Cloud Agents",
+      "description": "Lead maintainers for Cloud Agents. Repository administration is scoped to pick-your-ai-cloud-agents.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-cloud-agents",
+        "id": 20421514
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-cloud-agents"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1439072266"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20422096",
+      "name": "Lead Maintainers - Contributor Leaderboard",
+      "description": "Lead maintainers for the Contributor Leaderboard. Repository administration is scoped to pick-your-ai-leaderboard; coordinates with Lead Maintainers - Websites.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-contributor-leaderboard",
+        "id": 20422096
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-contributor-leaderboard"
+      ],
+      "parent_team_id": "team-20169020",
+      "repository_ids": [
+        "repo-1422874501"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20421774",
+      "name": "Lead Maintainers - Datasets & Benchmarks",
+      "description": "Lead maintainers for datasets-benchmarks. Repository administration is scoped to pick-your-ai-datasets. Initial lead: CompleteDotTech.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-datasets-benchmarks",
+        "id": 20421774
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-datasets-benchmarks"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1431120964"
+      ],
+      "project_ids": [],
+      "membership_observation": "empty",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20422282",
+      "name": "Lead Maintainers - Education",
+      "description": "Lead maintainers for Education, training and learning. Leads: PUSHINGSQUARES and c666agent666.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-education",
+        "id": 20422282
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-education"
+      ],
+      "parent_team_id": "team-20182720",
+      "repository_ids": [
+        "repo-1439194215"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20284775",
+      "name": "Lead Maintainers - Funding, Grants & Sustainability",
+      "description": "Lead maintainers for pick-your-ai-sustainability. Repository administration is scoped to Sustainability.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-funding-grants-sustainability",
+        "id": 20284775
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-funding-grants-sustainability"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1424960984"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20422306",
+      "name": "Lead Maintainers - Hardware & Infrastructure",
+      "description": "Hardware and infrastructure research for Pick Your AI. Builds on the existing T2 research; preserves existing decision records and issue assignments.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-hardware-infrastructure",
+        "id": 20422306
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-hardware-infrastructure"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1421934086"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423968",
+      "name": "Lead Maintainers - Main Website",
+      "description": "Lead maintainers for the Main Website. Repository administration is scoped to pick-your-ai-website; coordinates with Lead Maintainers - Websites.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-main-website",
+        "id": 20423968
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-main-website"
+      ],
+      "parent_team_id": "team-20169020",
+      "repository_ids": [
+        "repo-1422238606"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20398066",
+      "name": "Lead Maintainers - Market & Competitive Intelligence",
+      "description": "Lead maintainers for Market & Competitive Intelligence research (Project #2). Repository administration is scoped to the Market & Competitive Intelligence repository once created.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-market-competitive-intelligence",
+        "id": 20398066
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-market-competitive-intelligence"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1437739257"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20191293",
+      "name": "Lead Maintainers - Mobile Apps",
+      "description": "Lead maintainers for Mobile Apps. Triage access across repositories; repository administration is scoped to the mobile app repositories.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-mobile-apps",
+        "id": 20191293
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-mobile-apps"
+      ],
+      "parent_team_id": "team-20182744",
+      "repository_ids": [
+        "repo-1422897313",
+        "repo-1422897390"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20191279",
+      "name": "Lead Maintainers - Research",
+      "description": "Lead maintainers for the Research area. Triage access across repositories; repository administration is scoped to the research repository.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-research",
+        "id": 20191279
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-research"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1421934086",
+        "repo-1424960984",
+        "repo-1430403712",
+        "repo-1430404173",
+        "repo-1430404474",
+        "repo-1431120964",
+        "repo-1437739257"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20172997",
+      "name": "Lead Maintainers - Websites",
+      "description": "Lead maintainers for Pick Your AI websites. Triage access across repositories; repository administration is scoped to the website repository.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-websites",
+        "id": 20172997
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-websites"
+      ],
+      "parent_team_id": "team-20169020",
+      "repository_ids": [
+        "repo-1422238606",
+        "repo-1422874501"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20166984",
+      "name": "Main Website",
+      "description": "Contributors building and maintaining the main PickYour.AI website.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/main-website",
+        "id": 20166984
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/main-website"
+      ],
+      "parent_team_id": "team-20169020",
+      "repository_ids": [
+        "repo-1422238606"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423580",
+      "name": "Main Website - Backend & Integrations",
+      "description": "Website-side catalog/data interfaces, compatibility and cost engine integration, and saved-build service interfaces. Shared services and canonical research retain their existing owners.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/main-website-backend-integrations",
+        "id": 20423580
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/main-website-backend-integrations"
+      ],
+      "parent_team_id": "team-20166984",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423583",
+      "name": "Main Website - Platform & Quality",
+      "description": "Website engineering foundation, CI, deployment, security, performance and test automation. Preserves existing review and release safeguards.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/main-website-platform-quality",
+        "id": 20423583
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/main-website-platform-quality"
+      ],
+      "parent_team_id": "team-20166984",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423578",
+      "name": "Main Website - UI/UX",
+      "description": "Main website user journeys, builder/catalog interaction, frontend presentation, design system and accessibility. Scope and issue ownership remain with the existing website Project.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/main-website-ui-ux",
+        "id": 20423578
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/main-website-ui-ux"
+      ],
+      "parent_team_id": "team-20166984",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20184157",
+      "name": "Market & Competitive Intelligence",
+      "description": "Research team covering market analysis and competitive intelligence for the AI tools and services Pick Your AI compares.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence",
+        "id": 20184157
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1421934086",
+        "repo-1437739257"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423809",
+      "name": "Market & Competitive Intelligence - Competitors & Positioning",
+      "description": "Competitor landscape, feature comparisons and source-linked product positioning.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence-competitors-positioning",
+        "id": 20423809
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence-competitors-positioning"
+      ],
+      "parent_team_id": "team-20184157",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423812",
+      "name": "Market & Competitive Intelligence - Customers & Demand",
+      "description": "User problems, personas, customer research, demand and market evidence.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence-customers-demand",
+        "id": 20423812
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence-customers-demand"
+      ],
+      "parent_team_id": "team-20184157",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423813",
+      "name": "Market & Competitive Intelligence - Pricing & Business Models",
+      "description": "Commercial pricing comparisons, business models and monetization evidence; technical price records remain upstream.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence-pricing-business-models",
+        "id": 20423813
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence-pricing-business-models"
+      ],
+      "parent_team_id": "team-20184157",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20423815",
+      "name": "Market & Competitive Intelligence - Product Strategy & Validation",
+      "description": "Product scope, differentiation, feasibility, user experience and validation of product hypotheses.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence-product-strategy-validation",
+        "id": 20423815
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence-product-strategy-validation"
+      ],
+      "parent_team_id": "team-20184157",
+      "repository_ids": [],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20182744",
+      "name": "Mobile Apps",
+      "description": "Parent team for Pick Your AI mobile app work, covering the Android and Apple iOS apps.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/mobile-apps",
+        "id": 20182744
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/mobile-apps"
+      ],
+      "parent_team_id": "team-20182720",
+      "repository_ids": [
+        "repo-1422897313",
+        "repo-1422897390"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20182720",
+      "name": "Organization Maintainers",
+      "description": "Top-level team for all Pick Your AI maintainers. Parent of the area teams (Research, Mobile Apps, Websites) and their lead maintainer teams.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers",
+        "id": 20182720
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+      ],
+      "parent_team_id": null,
+      "repository_ids": [
+        "repo-1421934086",
+        "repo-1422238606",
+        "repo-1422874501",
+        "repo-1422897313",
+        "repo-1422897390",
+        "repo-1424960984",
+        "repo-1430403712",
+        "repo-1430404173",
+        "repo-1430404474",
+        "repo-1431120964",
+        "repo-1437739257"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20136531",
+      "name": "Research",
+      "description": "Parent team for all Pick Your AI research areas, including market intelligence, sustainability, funding and grants, and the builder workstream.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/research",
+        "id": 20136531
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/research"
+      ],
+      "parent_team_id": "team-20182720",
+      "repository_ids": [
+        "repo-1421934086",
+        "repo-1430403712",
+        "repo-1430404173",
+        "repo-1430404474",
+        "repo-1431120964",
+        "repo-1439072266"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20198473",
+      "name": "Research Maintainers",
+      "description": "Maintainers for Research repositories, reviewing contributions and keeping research work organized across all research sub-teams.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/research-maintainers",
+        "id": 20198473
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/research-maintainers"
+      ],
+      "parent_team_id": "team-20136531",
+      "repository_ids": [
+        "repo-1424960984",
+        "repo-1430403712",
+        "repo-1430404173",
+        "repo-1430404474",
+        "repo-1431120964",
+        "repo-1437739257"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20424197",
+      "name": "Review Leads",
+      "description": "Cross-repository independent review coordination. Write on public project repositories; responsibilities accepted by opt-in. No additional ruleset bypass.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/review-leads",
+        "id": 20424197
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/review-leads"
+      ],
+      "parent_team_id": null,
+      "repository_ids": [
+        "repo-1421934086",
+        "repo-1422238606",
+        "repo-1422874501",
+        "repo-1422897313",
+        "repo-1422897390",
+        "repo-1424960984",
+        "repo-1430403712",
+        "repo-1430404173",
+        "repo-1430404474",
+        "repo-1431120964",
+        "repo-1437739257",
+        "repo-1439072266",
+        "repo-1439194215"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    },
+    {
+      "kind": "team",
+      "id": "team-20169020",
+      "name": "Websites",
+      "description": "Parent team for Pick Your AI web properties, including the main website and the leaderboard.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/teams/websites",
+        "id": 20169020
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/websites"
+      ],
+      "parent_team_id": "team-20182720",
+      "repository_ids": [
+        "repo-1422238606",
+        "repo-1422874501"
+      ],
+      "project_ids": [],
+      "membership_observation": "members_present",
+      "operational_ownership": "unknown",
+      "review_capacity": "unknown"
+    }
+  ],
+  "repositories": [
+    {
+      "kind": "repository",
+      "id": "repo-1421934086",
+      "name": "pick-your-ai-research",
+      "description": "Research and shared data contracts for Pick Your AI: component catalogs, compatibility rules, pricing, and evidence for AI stacks.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-research",
+        "id": 1421934086
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/Pick-Your-AI/pick-your-ai-research"
+      ],
+      "team_ids": [
+        "team-20136531",
+        "team-20140728",
+        "team-20182720",
+        "team-20184157",
+        "team-20184167",
+        "team-20184179",
+        "team-20191279",
+        "team-20398330",
+        "team-20398335",
+        "team-20398339",
+        "team-20398347",
+        "team-20421768",
+        "team-20422305",
+        "team-20422306",
+        "team-20424197"
+      ],
+      "project_ids": [
+        "project-PVT_kwDOFHg4Xc4BnUon"
+      ]
+    },
+    {
+      "kind": "repository",
+      "id": "repo-1422014674",
+      "name": ".github",
+      "description": "Organization profile, contribution guidance, and shared community health files for Pick Your AI, a PCPartPicker-inspired AI stack builder.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/.github",
+        "id": 1422014674
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/Pick-Your-AI/.github"
+      ],
+      "team_ids": [],
+      "project_ids": []
+    },
+    {
+      "kind": "repository",
+      "id": "repo-1422238606",
+      "name": "pick-your-ai-website",
+      "description": "Pick Your AI: a PCPartPicker-inspired builder for complete AI stacks. Explore components, compatibility, and costs in a preview using synthetic data.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-website",
+        "id": 1422238606
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/Pick-Your-AI/pick-your-ai-website"
+      ],
+      "team_ids": [
+        "team-20140728",
+        "team-20166984",
+        "team-20169020",
+        "team-20172997",
+        "team-20182720",
+        "team-20423968",
+        "team-20424197"
+      ],
+      "project_ids": [
+        "project-PVT_kwDOFHg4Xc4BnX2e"
+      ]
+    },
+    {
+      "kind": "repository",
+      "id": "repo-1422874501",
+      "name": "pick-your-ai-leaderboard",
+      "description": "Public contributor recognition for Pick Your AI: leaderboard delivery plan, metric definitions, evidence and governance.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-leaderboard",
+        "id": 1422874501
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/Pick-Your-AI/pick-your-ai-leaderboard"
+      ],
+      "team_ids": [
+        "team-20140728",
+        "team-20167030",
+        "team-20169020",
+        "team-20172997",
+        "team-20182720",
+        "team-20422096",
+        "team-20424197"
+      ],
+      "project_ids": [
+        "project-PVT_kwDOFHg4Xc4BnbgH"
+      ]
+    },
+    {
+      "kind": "repository",
+      "id": "repo-1422897313",
+      "name": "pick-your-ai-android",
+      "description": "Android planning client for Pick Your AI; delivery tracked in Project 4.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-android",
+        "id": 1422897313
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/Pick-Your-AI/pick-your-ai-android"
+      ],
+      "team_ids": [
+        "team-20140728",
+        "team-20166812",
+        "team-20182720",
+        "team-20182744",
+        "team-20191293",
+        "team-20423992",
+        "team-20424197"
+      ],
+      "project_ids": [
+        "project-PVT_kwDOFHg4Xc4BnbMJ"
+      ]
+    },
+    {
+      "kind": "repository",
+      "id": "repo-1422897390",
+      "name": "pick-your-ai-apple",
+      "description": "Apple/iOS planning client for Pick Your AI; delivery tracked in Project 5.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-apple",
+        "id": 1422897390
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/Pick-Your-AI/pick-your-ai-apple"
+      ],
+      "team_ids": [
+        "team-20140728",
+        "team-20166920",
+        "team-20182720",
+        "team-20182744",
+        "team-20191293",
+        "team-20424010",
+        "team-20424197"
+      ],
+      "project_ids": [
+        "project-PVT_kwDOFHg4Xc4BnbQs"
+      ]
+    },
+    {
+      "kind": "repository",
+      "id": "repo-1424960984",
+      "name": "pick-your-ai-sustainability",
+      "description": "Funding, grants, donated infrastructure, open-source support, nonprofit readiness, and sustainable operations for Pick Your AI.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-sustainability",
+        "id": 1424960984
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/Pick-Your-AI/pick-your-ai-sustainability"
+      ],
+      "team_ids": [
+        "team-20182720",
+        "team-20184167",
+        "team-20191279",
+        "team-20198473",
+        "team-20284775",
+        "team-20424197"
+      ],
+      "project_ids": [
+        "project-PVT_kwDOFHg4Xc4Bnqgs"
+      ]
+    },
+    {
+      "kind": "repository",
+      "id": "repo-1430403712",
+      "name": "pick-your-ai-applications",
+      "description": "Source-linked research and delivery backlog for a comprehensive directory of end-user and enterprise AI applications, products, and services.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-applications",
+        "id": 1430403712
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/Pick-Your-AI/pick-your-ai-applications"
+      ],
+      "team_ids": [
+        "team-20136531",
+        "team-20182720",
+        "team-20191279",
+        "team-20198473",
+        "team-20398335",
+        "team-20421771",
+        "team-20424197"
+      ],
+      "project_ids": [
+        "project-PVT_kwDOFHg4Xc4BoUH6"
+      ]
+    },
+    {
+      "kind": "repository",
+      "id": "repo-1430404173",
+      "name": "pick-your-ai-papers",
+      "description": "Source-linked AI literature, methods, authors, labs, scholarly evidence and reproducibility planning for Pick Your AI.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-papers",
+        "id": 1430404173
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/Pick-Your-AI/pick-your-ai-papers"
+      ],
+      "team_ids": [
+        "team-20136531",
+        "team-20182720",
+        "team-20191279",
+        "team-20198473",
+        "team-20398339",
+        "team-20421770",
+        "team-20424197"
+      ],
+      "project_ids": [
+        "project-PVT_kwDOFHg4Xc4BoUHz"
+      ]
+    },
+    {
+      "kind": "repository",
+      "id": "repo-1430404474",
+      "name": "pick-your-ai-catalog-pipeline",
+      "description": "Shared AI research catalog ingestion and publishing: implementation backlog, evidence, source governance and synthetic bootstrap.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-catalog-pipeline",
+        "id": 1430404474
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/Pick-Your-AI/pick-your-ai-catalog-pipeline"
+      ],
+      "team_ids": [
+        "team-20136531",
+        "team-20182720",
+        "team-20191279",
+        "team-20198473",
+        "team-20398347",
+        "team-20421773",
+        "team-20424197"
+      ],
+      "project_ids": [
+        "project-PVT_kwDOFHg4Xc4BoUHM"
+      ]
+    },
+    {
+      "kind": "repository",
+      "id": "repo-1431120964",
+      "name": "pick-your-ai-datasets",
+      "description": "Research and planning for an evidence-backed directory of AI datasets and benchmarks: identity, versions, rights, provenance and evaluation integrity.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-datasets",
+        "id": 1431120964
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/Pick-Your-AI/pick-your-ai-datasets"
+      ],
+      "team_ids": [
+        "team-20136531",
+        "team-20182720",
+        "team-20191279",
+        "team-20198473",
+        "team-20398330",
+        "team-20421774",
+        "team-20424197"
+      ],
+      "project_ids": [
+        "project-PVT_kwDOFHg4Xc4BoZsU"
+      ]
+    },
+    {
+      "kind": "repository",
+      "id": "repo-1437739257",
+      "name": "pick-your-ai-market",
+      "description": "Competitive intelligence, market validation, customer research, and product differentiation for Pick Your AI, the PCPartPicker for AI.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-market",
+        "id": 1437739257
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/Pick-Your-AI/pick-your-ai-market"
+      ],
+      "team_ids": [
+        "team-20182720",
+        "team-20184157",
+        "team-20191279",
+        "team-20198473",
+        "team-20398066",
+        "team-20424197"
+      ],
+      "project_ids": [
+        "project-PVT_kwDOFHg4Xc4BnViW"
+      ]
+    },
+    {
+      "kind": "repository",
+      "id": "repo-1439072266",
+      "name": "pick-your-ai-cloud-agents",
+      "description": "Research home for cloud agent platforms, SDKs, runtimes and architecture across AWS, OpenAI, Anthropic and other providers. Initial organizational setup only.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-cloud-agents",
+        "id": 1439072266
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/Pick-Your-AI/pick-your-ai-cloud-agents"
+      ],
+      "team_ids": [
+        "team-20136531",
+        "team-20421513",
+        "team-20421514",
+        "team-20424197"
+      ],
+      "project_ids": [
+        "project-PVT_kwDOFHg4Xc4BpXxK"
+      ]
+    },
+    {
+      "kind": "repository",
+      "id": "repo-1439194215",
+      "name": "pick-your-ai-education",
+      "description": "Learning paths, tutorials, resources, workshops and contributor onboarding for Pick Your AI.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-education",
+        "id": 1439194215
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/Pick-Your-AI/pick-your-ai-education"
+      ],
+      "team_ids": [
+        "team-20422276",
+        "team-20422282",
+        "team-20424197"
+      ],
+      "project_ids": [
+        "project-PVT_kwDOFHg4Xc4BpYpe"
+      ]
+    },
+    {
+      "kind": "repository",
+      "id": "repo-1439241566",
+      "name": "Knowledge-Base",
+      "description": "Description not published",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/Knowledge-Base",
+        "id": 1439241566
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/Pick-Your-AI/Knowledge-Base"
+      ],
+      "team_ids": [],
+      "project_ids": []
+    },
+    {
+      "kind": "repository",
+      "id": "repo-1439294441",
+      "name": "pick-your-ai-volunteers",
+      "description": "Volunteer directory, public-safe intake, placement review and onboarding for Pick Your AI. Planned nonprofit; legal status unverified.",
+      "public_benefit": "Coordinates public-safe volunteer participation and evidence-based onboarding.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-volunteers",
+        "id": 1439294441
+      },
+      "verified_at": "2026-10-30T05:05:17.701534+00:00",
+      "evidence": [
+        "https://github.com/Pick-Your-AI/pick-your-ai-volunteers"
+      ],
+      "team_ids": [],
+      "project_ids": [
+        "project-PVT_kwDOFHg4Xc4BpZWN"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "kind": "project",
+      "id": "project-PVT_kwDOFHg4Xc4BpYpe",
+      "name": "Pick Your AI — Community — Education",
+      "description": "Curriculum, tutorials, learning resources, workshops and learner support for Pick Your AI.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/projects/13",
+        "id": "PVT_kwDOFHg4Xc4BpYpe"
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/projects/13"
+      ],
+      "repository_ids": [
+        "repo-1439194215"
+      ],
+      "team_ids": [
+        "team-20422276",
+        "team-20422282",
+        "team-20424197"
+      ]
+    },
+    {
+      "kind": "project",
+      "id": "project-PVT_kwDOFHg4Xc4BpXxK",
+      "name": "Pick Your AI — Research — Cloud Agents",
+      "description": "Cloud agent platforms, SDKs, runtimes and architecture. Empty organizational shell; implementation and backlog are not started.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/projects/12",
+        "id": "PVT_kwDOFHg4Xc4BpXxK"
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/projects/12"
+      ],
+      "repository_ids": [
+        "repo-1439072266"
+      ],
+      "team_ids": [
+        "team-20136531",
+        "team-20421513",
+        "team-20421514",
+        "team-20424197"
+      ]
+    },
+    {
+      "kind": "project",
+      "id": "project-PVT_kwDOFHg4Xc4BoZsU",
+      "name": "Pick Your AI — Research — Datasets & Benchmarks",
+      "description": "Evidence-backed research on AI datasets and benchmarks: identity, versions, rights, provenance, evaluation integrity and integrations.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/projects/11",
+        "id": "PVT_kwDOFHg4Xc4BoZsU"
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/projects/11"
+      ],
+      "repository_ids": [
+        "repo-1431120964"
+      ],
+      "team_ids": [
+        "team-20136531",
+        "team-20182720",
+        "team-20191279",
+        "team-20198473",
+        "team-20398330",
+        "team-20421774",
+        "team-20424197"
+      ]
+    },
+    {
+      "kind": "project",
+      "id": "project-PVT_kwDOFHg4Xc4BoUH6",
+      "name": "Pick Your AI — Research — AI Applications",
+      "description": "Evidence-backed research and delivery planning for end-user and enterprise AI software applications, products and software services.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/projects/10",
+        "id": "PVT_kwDOFHg4Xc4BoUH6"
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/projects/10"
+      ],
+      "repository_ids": [
+        "repo-1430403712"
+      ],
+      "team_ids": [
+        "team-20136531",
+        "team-20182720",
+        "team-20191279",
+        "team-20198473",
+        "team-20398335",
+        "team-20421771",
+        "team-20424197"
+      ]
+    },
+    {
+      "kind": "project",
+      "id": "project-PVT_kwDOFHg4Xc4BoUHz",
+      "name": "Pick Your AI — Research — AI Papers & Index",
+      "description": "Comprehensive AI academic literature discovery, scholarly metadata, research taxonomy, reproducibility, evidence, knowledge-graph relationships and website publication.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/projects/9",
+        "id": "PVT_kwDOFHg4Xc4BoUHz"
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/projects/9"
+      ],
+      "repository_ids": [
+        "repo-1430404173"
+      ],
+      "team_ids": [
+        "team-20136531",
+        "team-20182720",
+        "team-20191279",
+        "team-20198473",
+        "team-20398339",
+        "team-20421770",
+        "team-20424197"
+      ]
+    },
+    {
+      "kind": "project",
+      "id": "project-PVT_kwDOFHg4Xc4BoUHM",
+      "name": "Pick Your AI — Development — Catalog Pipeline",
+      "description": "Organization-wide AI research ingestion, source governance, normalization, evidence review, catalog publishing, freshness, and consumer delivery.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/projects/8",
+        "id": "PVT_kwDOFHg4Xc4BoUHM"
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/projects/8"
+      ],
+      "repository_ids": [
+        "repo-1430404474"
+      ],
+      "team_ids": [
+        "team-20136531",
+        "team-20182720",
+        "team-20191279",
+        "team-20198473",
+        "team-20398347",
+        "team-20421773",
+        "team-20424197"
+      ]
+    },
+    {
+      "kind": "project",
+      "id": "project-PVT_kwDOFHg4Xc4Bnqgs",
+      "name": "Pick Your AI — Operations — Funding, Grants & Sustainability",
+      "description": "Community-led research, nonprofit readiness, grant discovery, financial sponsorship, donated infrastructure, inference credits, hardware, development tools, technical assistance, and sustainable funding for Pick Your AI.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/projects/7",
+        "id": "PVT_kwDOFHg4Xc4Bnqgs"
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/projects/7"
+      ],
+      "repository_ids": [
+        "repo-1424960984"
+      ],
+      "team_ids": [
+        "team-20182720",
+        "team-20184167",
+        "team-20191279",
+        "team-20198473",
+        "team-20284775",
+        "team-20424197"
+      ]
+    },
+    {
+      "kind": "project",
+      "id": "project-PVT_kwDOFHg4Xc4BnbgH",
+      "name": "Pick Your AI — Development — Contributor Leaderboard",
+      "description": "Complete contributor leaderboard delivery: 20 epics, 112 work packages, 98 metric definitions, native dependencies, evidence and release gates.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/projects/6",
+        "id": "PVT_kwDOFHg4Xc4BnbgH"
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/projects/6"
+      ],
+      "repository_ids": [
+        "repo-1422874501"
+      ],
+      "team_ids": [
+        "team-20140728",
+        "team-20167030",
+        "team-20169020",
+        "team-20172997",
+        "team-20182720",
+        "team-20422096",
+        "team-20424197"
+      ]
+    },
+    {
+      "kind": "project",
+      "id": "project-PVT_kwDOFHg4Xc4BnbQs",
+      "name": "Pick Your AI — Development — Apple/iOS",
+      "description": "End-to-end Apple/iOS delivery: 18 epics, 110 work packages, native hierarchy, shared-service integration, TestFlight and App Store release gates.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/projects/5",
+        "id": "PVT_kwDOFHg4Xc4BnbQs"
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/projects/5"
+      ],
+      "repository_ids": [
+        "repo-1422897390"
+      ],
+      "team_ids": [
+        "team-20140728",
+        "team-20166920",
+        "team-20182720",
+        "team-20182744",
+        "team-20191293",
+        "team-20424010",
+        "team-20424197"
+      ]
+    },
+    {
+      "kind": "project",
+      "id": "project-PVT_kwDOFHg4Xc4BnbMJ",
+      "name": "Pick Your AI — Development — Android",
+      "description": "End-to-end Android delivery: 18 epics, 110 work packages, native hierarchy, evidence-linked prerequisites, acceptance gates and release operations.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/projects/4",
+        "id": "PVT_kwDOFHg4Xc4BnbMJ"
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/projects/4"
+      ],
+      "repository_ids": [
+        "repo-1422897313"
+      ],
+      "team_ids": [
+        "team-20140728",
+        "team-20166812",
+        "team-20182720",
+        "team-20182744",
+        "team-20191293",
+        "team-20423992",
+        "team-20424197"
+      ]
+    },
+    {
+      "kind": "project",
+      "id": "project-PVT_kwDOFHg4Xc4BnX2e",
+      "name": "Pick Your AI — Development — Main Website",
+      "description": "Website implementation for pickyour.ai. Each issue links its research counterparts in Projects #1/#2 (Pick-Your-AI/pick-your-ai-research).",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/projects/3",
+        "id": "PVT_kwDOFHg4Xc4BnX2e"
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/projects/3"
+      ],
+      "repository_ids": [
+        "repo-1422238606"
+      ],
+      "team_ids": [
+        "team-20140728",
+        "team-20166984",
+        "team-20169020",
+        "team-20172997",
+        "team-20182720",
+        "team-20423968",
+        "team-20424197"
+      ]
+    },
+    {
+      "kind": "project",
+      "id": "project-PVT_kwDOFHg4Xc4BnViW",
+      "name": "Pick Your AI — Research — Market & Competitive Intelligence",
+      "description": "Comprehensive competitive intelligence, market validation, customer research, data-source discovery, product differentiation, and strategic planning for Pick Your AI—the PCPartPicker for AI.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/projects/2",
+        "id": "PVT_kwDOFHg4Xc4BnViW"
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/projects/2"
+      ],
+      "repository_ids": [
+        "repo-1437739257"
+      ],
+      "team_ids": [
+        "team-20182720",
+        "team-20184157",
+        "team-20191279",
+        "team-20198473",
+        "team-20398066",
+        "team-20424197"
+      ]
+    },
+    {
+      "kind": "project",
+      "id": "project-PVT_kwDOFHg4Xc4BnUon",
+      "name": "Pick Your AI — Research — AI Builder",
+      "description": "Research for a PCPartPicker-inspired AI system builder: configuration, models, infrastructure, retrieval, agents, training, and operations.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/projects/1",
+        "id": "PVT_kwDOFHg4Xc4BnUon"
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/projects/1"
+      ],
+      "repository_ids": [
+        "repo-1421934086"
+      ],
+      "team_ids": [
+        "team-20136531",
+        "team-20140728",
+        "team-20182720",
+        "team-20184157",
+        "team-20184167",
+        "team-20184179",
+        "team-20191279",
+        "team-20398330",
+        "team-20398335",
+        "team-20398339",
+        "team-20398347",
+        "team-20421768",
+        "team-20422305",
+        "team-20422306",
+        "team-20424197"
+      ]
+    },
+    {
+      "kind": "project",
+      "id": "project-PVT_kwDOFHg4Xc4BpZWN",
+      "name": "Pick Your AI — Volunteer Operations",
+      "description": "Public-safe applications, opportunities and staffing readiness.",
+      "public_benefit": "Makes community work and readiness visible without private applicant data.",
+      "github": {
+        "url": "https://github.com/orgs/Pick-Your-AI/projects/14",
+        "id": "PVT_kwDOFHg4Xc4BpZWN"
+      },
+      "verified_at": "2026-10-30T05:05:17.701534+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/projects/14"
+      ],
+      "repository_ids": [
+        "repo-1439294441"
+      ],
+      "team_ids": []
+    }
+  ],
+  "roles": [
+    {
+      "id": "role-research",
+      "name": "Evidence research",
+      "responsibilities": [
+        "Investigate primary sources",
+        "Document unknowns and source dates",
+        "Submit findings to existing owners"
+      ],
+      "skills": [
+        "research",
+        "writing"
+      ]
+    },
+    {
+      "id": "role-education",
+      "name": "Education and documentation",
+      "responsibilities": [
+        "Improve learning resources",
+        "Explain AI choices accessibly",
+        "Seek existing educator review"
+      ],
+      "skills": [
+        "education",
+        "documentation",
+        "accessibility"
+      ]
+    },
+    {
+      "id": "role-maintainer",
+      "name": "Specialty lead maintainer",
+      "responsibilities": [
+        "Review scoped contributions",
+        "Confirm review and onboarding capacity",
+        "Coordinate with existing parent-team administration"
+      ],
+      "skills": [
+        "review",
+        "coordination"
+      ]
+    },
+    {
+      "id": "role-operations",
+      "name": "Volunteer operations support",
+      "responsibilities": [
+        "Maintain public-safe directory",
+        "Flag stale reviewer capacity",
+        "Help route consented applications"
+      ],
+      "skills": [
+        "community",
+        "documentation",
+        "operations"
+      ]
+    }
+  ],
+  "opportunities": [
+    {
+      "kind": "opportunity",
+      "id": "op-lead-maintainers-ai-builder",
+      "name": "Lead Maintainers - AI Builder — leadership interest",
+      "description": "Specialty team is recorded as empty and awaiting staffing; role mandate and onboarding must be agreed before placement.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-volunteers/issues/2",
+        "id": 6113606119
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-builder",
+        "https://github.com/Pick-Your-AI/.github/issues/18"
+      ],
+      "team_ids": [
+        "team-20421768"
+      ],
+      "repository_ids": [
+        "repo-1421934086"
+      ],
+      "project_ids": [
+        "project-PVT_kwDOFHg4Xc4BnUon"
+      ],
+      "role_ids": [
+        "role-maintainer"
+      ],
+      "skills": [
+        "review",
+        "coordination"
+      ],
+      "prerequisites": [
+        "A separately approved mandate and accepted operational responsibility"
+      ],
+      "time_commitment": "to be agreed",
+      "minimum_hours": null,
+      "beginner_suitability": "unknown",
+      "mentoring_capacity": "unknown",
+      "onboarding_capacity": "unknown",
+      "openings": null,
+      "status": "paused",
+      "staffing_need": "leader_needed",
+      "priority": "high",
+      "priority_rationale": "Organization decision #18 records this specialty lead team as empty and awaiting staffing; interim administration is distinct.",
+      "routing_policy_id": "route-v1"
+    },
+    {
+      "kind": "opportunity",
+      "id": "op-lead-maintainers-ai-papers-index",
+      "name": "Lead Maintainers - AI Papers & Index — leadership interest",
+      "description": "Specialty team is recorded as empty and awaiting staffing; role mandate and onboarding must be agreed before placement.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-volunteers/issues/3",
+        "id": 6113606321
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-papers-index",
+        "https://github.com/Pick-Your-AI/.github/issues/18"
+      ],
+      "team_ids": [
+        "team-20421770"
+      ],
+      "repository_ids": [
+        "repo-1430404173"
+      ],
+      "project_ids": [
+        "project-PVT_kwDOFHg4Xc4BoUHz"
+      ],
+      "role_ids": [
+        "role-maintainer"
+      ],
+      "skills": [
+        "review",
+        "coordination"
+      ],
+      "prerequisites": [
+        "A separately approved mandate and accepted operational responsibility"
+      ],
+      "time_commitment": "to be agreed",
+      "minimum_hours": null,
+      "beginner_suitability": "unknown",
+      "mentoring_capacity": "unknown",
+      "onboarding_capacity": "unknown",
+      "openings": null,
+      "status": "paused",
+      "staffing_need": "leader_needed",
+      "priority": "high",
+      "priority_rationale": "Organization decision #18 records this specialty lead team as empty and awaiting staffing; interim administration is distinct.",
+      "routing_policy_id": "route-v1"
+    },
+    {
+      "kind": "opportunity",
+      "id": "op-lead-maintainers-catalog-pipeline",
+      "name": "Lead Maintainers - Catalog Pipeline — leadership interest",
+      "description": "Specialty team is recorded as empty and awaiting staffing; role mandate and onboarding must be agreed before placement.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-volunteers/issues/4",
+        "id": 6113606511
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-catalog-pipeline",
+        "https://github.com/Pick-Your-AI/.github/issues/18"
+      ],
+      "team_ids": [
+        "team-20421773"
+      ],
+      "repository_ids": [
+        "repo-1430404474"
+      ],
+      "project_ids": [
+        "project-PVT_kwDOFHg4Xc4BoUHM"
+      ],
+      "role_ids": [
+        "role-maintainer"
+      ],
+      "skills": [
+        "review",
+        "coordination"
+      ],
+      "prerequisites": [
+        "A separately approved mandate and accepted operational responsibility"
+      ],
+      "time_commitment": "to be agreed",
+      "minimum_hours": null,
+      "beginner_suitability": "unknown",
+      "mentoring_capacity": "unknown",
+      "onboarding_capacity": "unknown",
+      "openings": null,
+      "status": "paused",
+      "staffing_need": "leader_needed",
+      "priority": "high",
+      "priority_rationale": "Organization decision #18 records this specialty lead team as empty and awaiting staffing; interim administration is distinct.",
+      "routing_policy_id": "route-v1"
+    },
+    {
+      "kind": "opportunity",
+      "id": "op-lead-maintainers-datasets-benchmarks",
+      "name": "Lead Maintainers - Datasets & Benchmarks — leadership interest",
+      "description": "Specialty team is recorded as empty and awaiting staffing; role mandate and onboarding must be agreed before placement.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-volunteers/issues/5",
+        "id": 6113606690
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-datasets-benchmarks",
+        "https://github.com/Pick-Your-AI/.github/issues/18"
+      ],
+      "team_ids": [
+        "team-20421774"
+      ],
+      "repository_ids": [
+        "repo-1431120964"
+      ],
+      "project_ids": [
+        "project-PVT_kwDOFHg4Xc4BoZsU"
+      ],
+      "role_ids": [
+        "role-maintainer"
+      ],
+      "skills": [
+        "review",
+        "coordination"
+      ],
+      "prerequisites": [
+        "A separately approved mandate and accepted operational responsibility"
+      ],
+      "time_commitment": "to be agreed",
+      "minimum_hours": null,
+      "beginner_suitability": "unknown",
+      "mentoring_capacity": "unknown",
+      "onboarding_capacity": "unknown",
+      "openings": null,
+      "status": "paused",
+      "staffing_need": "leader_needed",
+      "priority": "high",
+      "priority_rationale": "Organization decision #18 records this specialty lead team as empty and awaiting staffing; interim administration is distinct.",
+      "routing_policy_id": "route-v1"
+    },
+    {
+      "kind": "opportunity",
+      "id": "op-education",
+      "name": "Education — expression of interest",
+      "description": "Training, learning resources, tutorials and educational materials for Pick Your AI contributors and users.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-volunteers/issues/6",
+        "id": 6113606854
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/education"
+      ],
+      "team_ids": [
+        "team-20422276"
+      ],
+      "repository_ids": [
+        "repo-1439194215"
+      ],
+      "project_ids": [],
+      "role_ids": [
+        "role-education"
+      ],
+      "skills": [
+        "education",
+        "documentation",
+        "accessibility"
+      ],
+      "prerequisites": [
+        "Scope and reviewer acceptance must be agreed"
+      ],
+      "time_commitment": "to be agreed",
+      "minimum_hours": null,
+      "beginner_suitability": "unknown",
+      "mentoring_capacity": "unknown",
+      "onboarding_capacity": "unknown",
+      "openings": null,
+      "status": "paused",
+      "staffing_need": "availability_unknown",
+      "priority": "unconfirmed",
+      "priority_rationale": "Documented work area; recruiting capacity has not been confirmed.",
+      "routing_policy_id": "route-v1"
+    },
+    {
+      "kind": "opportunity",
+      "id": "op-funding-grants-sustainability",
+      "name": "Funding, Grants & Sustainability — expression of interest",
+      "description": "Research team for funding, grants, and long-term sustainability planning for Pick Your AI.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-volunteers/issues/7",
+        "id": 6113607057
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/funding-grants-sustainability"
+      ],
+      "team_ids": [
+        "team-20184167"
+      ],
+      "repository_ids": [
+        "repo-1421934086",
+        "repo-1424960984"
+      ],
+      "project_ids": [],
+      "role_ids": [
+        "role-research"
+      ],
+      "skills": [
+        "research",
+        "writing"
+      ],
+      "prerequisites": [
+        "Scope and reviewer acceptance must be agreed"
+      ],
+      "time_commitment": "to be agreed",
+      "minimum_hours": null,
+      "beginner_suitability": "unknown",
+      "mentoring_capacity": "unknown",
+      "onboarding_capacity": "unknown",
+      "openings": null,
+      "status": "paused",
+      "staffing_need": "availability_unknown",
+      "priority": "unconfirmed",
+      "priority_rationale": "Documented work area; recruiting capacity has not been confirmed.",
+      "routing_policy_id": "route-v1"
+    },
+    {
+      "kind": "opportunity",
+      "id": "op-organization-maintainers",
+      "name": "Organization Maintainers — expression of interest",
+      "description": "Top-level team for all Pick Your AI maintainers. Parent of the area teams (Research, Mobile Apps, Websites) and their lead maintainer teams.",
+      "public_benefit": "Supports transparent AI comparison, education and evidence-based community research.",
+      "github": {
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-volunteers/issues/8",
+        "id": 6113607274
+      },
+      "verified_at": "2026-10-30T05:00:41.518730+00:00",
+      "evidence": [
+        "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+      ],
+      "team_ids": [
+        "team-20182720"
+      ],
+      "repository_ids": [
+        "repo-1439294441"
+      ],
+      "project_ids": [
+        "project-PVT_kwDOFHg4Xc4BpZWN"
+      ],
+      "role_ids": [
+        "role-operations"
+      ],
+      "skills": [
+        "community",
+        "documentation",
+        "operations"
+      ],
+      "prerequisites": [
+        "Scope and reviewer acceptance must be agreed"
+      ],
+      "time_commitment": "to be agreed",
+      "minimum_hours": null,
+      "beginner_suitability": "unknown",
+      "mentoring_capacity": "unknown",
+      "onboarding_capacity": "unknown",
+      "openings": null,
+      "status": "paused",
+      "staffing_need": "availability_unknown",
+      "priority": "unconfirmed",
+      "priority_rationale": "Documented work area; recruiting capacity has not been confirmed.",
+      "routing_policy_id": "route-v1"
+    }
+  ],
+  "routing_policies": [
+    {
+      "id": "route-v1",
+      "status": "proposed",
+      "order": [
+        "team_reviewer",
+        "repository_maintainer",
+        "repository_lead",
+        "parent_team_reviewer",
+        "organization_fallback"
+      ],
+      "primary_review_route": null,
+      "approved_fallback_route": null,
+      "evidence": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/issues/18"
+      ]
+    }
+  ]
+}
