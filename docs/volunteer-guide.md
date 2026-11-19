@@ -17,3 +17,5 @@ To withdraw, comment on your application:
 ```
 
 This remains available even while decision authority is inactive. Withdrawing ends the application workflow; it does not erase GitHub history or revoke access. You can also ask to leave in ordinary language, for operator follow-up. Removing previously granted access requires a separate authorized administrator action. Do not post private departure reasons. Agree handoff of open work without making continued volunteering a condition of leaving. Corrections and content removal requests go through the existing GitHub/organization mechanisms; permanent erasure from clones, caches or Git history cannot be promised.
+
+If the application has no initialized bot record, use the [explicit recovery procedure](identity-v2.md) to confirm your consent in a fresh comment. Referral agreement or refusal must identify the current `proposal_id` shown in the bot record; the same guide gives the command format. You can withdraw before form confirmation without agreeing to enter the volunteer program.

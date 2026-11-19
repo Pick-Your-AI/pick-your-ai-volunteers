@@ -1,15 +1,15 @@
 {
   "schema_version": "1.0.0",
-  "verified_at": "2026-11-19T16:25:25.223433+00:00",
+  "verified_at": "2026-11-19T16:42:23.502192+00:00",
   "environment": "Existing isolated Linux workspace; Python virtual environment with installed pinned system packages; no new VM",
   "python": "3.12.14",
   "dependencies": {
     "jsonschema": "4.26.0",
     "PyYAML": "6.0.3"
   },
-  "source_base": "56e4ec71aa5ef23efe18cd59f6ae6b6482245cc9",
+  "source_base": "ff340a35133b940aa2dfc446da39e84daa7dc056",
   "default_branch_at_start": "cddd346f447386ee452241c16c9a3079c3d64d5e",
-  "tests": 98,
+  "tests": 128,
   "result": "passed",
   "evidence_level": "offline synthetic fixtures and mocked GitHub transport",
   "commands": [
@@ -29,18 +29,19 @@
     "requirements.txt": "37caf5bff910fbd7dda44433b92df25fbfd989aea829e9bc4ce37e70df1f1782",
     "schemas/application.v1.schema.json": "6ebb2fbd982fe50c178f94962f0cd72997408a88e03673ca99b4898c0316ddd4",
     "schemas/authority.v2.schema.json": "13dffd547a531270e35e5ce1337b866f259e5792f997d1ec95951c33fac393b7",
-    "schemas/decision.v1.schema.json": "0f6433ac4cc2539f4288805c6df9f8124278f68745f582633fcdf0a991519e38",
+    "schemas/decision.v2.schema.json": "f5b3a4b6ff8eebad056778d99f20159b3e3f308c5ada9c6b0c6668d2c843da7a",
     "schemas/directory.v1.schema.json": "24d4cf153fe77d5f9160165627a17a51ca34fa53432c6e5add4292e377102ef1",
     "scripts/generate.py": "eea54a36a6b1fe71d5df9faa7db0f46c0f82eddfe1016a2fb2849226da2346c3",
-    "scripts/github_intake.py": "6a1bae48ce5d3131828c3f76a97de635c2d74a1039731bf5665eb651d73081e9",
-    "scripts/program.py": "eba9ca568780b96f302cad1cee6b7330276af02cd34eac077d23c9b4e0d6bbcc",
-    "scripts/project_sync.py": "472915dbfbc8a25c7e5569f54c2e745a17ce9188b768fd3edb098eb5bee3c107",
+    "scripts/github_intake.py": "29dc40e16038686bd90881cedd9f70ff50b11bd6121ba3e71c68c6bbd798cd39",
+    "scripts/program.py": "c5f29c56865c390128f641fa4247148eda1f580db8c42a26c977d219eb8af7d1",
+    "scripts/project_sync.py": "42276e2099a810b58631ce2c45166861d18fe5f1746ed9c56f38727c38c54d8f",
     "scripts/validate.py": "c7ee3af2eb7e7eb19248f7df9eacc9bcdf201abd380b0d4a93e584dd2688aacb",
-    "tests/test_authority_contract.py": "57fd4603a5f53167d3152562d0d9714399d485dd77550a967e0cbf584c17d808",
-    "tests/test_identity_handoffs.py": "0ae931603d9230ee346075403710cffc754f218d99b1e5a476b5a90c782d971f",
-    "tests/test_intake.py": "c53294b61472ad62afbf58695259acf5f0c7f4feadeeee3d982cd9e7594da40a",
-    "tests/test_program.py": "8a9005f3b5d6161daeca3750f50a6f72b2a766d65707a079cd93612affdb7f19",
-    "tests/test_routing_lifecycle.py": "7fd2fe161e132096dacbcdd20022760e17457bc5c0640963b8dfcbac9a3ad76c"
+    "tests/test_authority_contract.py": "504dbb2b76e7e16d71f4c2085f0e491341fcdb879ad2b0bdbbf081384b472524",
+    "tests/test_consent_recovery.py": "b1b0e52309b86c85dae837aa204ff8cf8ac161633b9f9d2f2f55f5158b6f06fe",
+    "tests/test_identity_handoffs.py": "1945fac02ad8629f0e038f694e43dce7497345c55feb7b8e5ea856efa1dedbde",
+    "tests/test_intake.py": "d0d34e2fdd348a63263d458472d3114a6a04ac2accca2f825d0922452816622f",
+    "tests/test_program.py": "922f78cd3fe47046f5a7aeb99f6ae879242d06e35fc138c4c4fdcc31d570f653",
+    "tests/test_routing_lifecycle.py": "e999bd50f662dfdb4d6a7cde2f88de7de669931522c7acbe917e210f906ace4d"
   },
   "not_verified": [
     "new fresh VM",
@@ -54,5 +55,5 @@
     "eligible GitHub latest-push approving review",
     "website API"
   ],
-  "independently_authored_acceptance_tests": 25
+  "independently_authored_acceptance_tests": 36
 }

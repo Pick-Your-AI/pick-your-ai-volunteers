@@ -39,7 +39,8 @@ class Intake(unittest.TestCase):
         if payload is None:
             if path.startswith('user/'):
                 return self.identities[int(path.split('/')[1])]
-            return self.comments[:]
+            page = int(path.rsplit('page=', 1)[-1])
+            return self.comments[(page - 1) * 100:page * 100]
         self.writes.append((path, payload))
         if path.endswith('/comments'):
             self.comments.append({'id': 1000 + len(self.writes), 'user': {'login': 'github-actions[bot]', 'type': 'Bot'}, 'performed_via_github_app': {'slug': 'github-actions'}, 'body': payload['body'], 'created_at': '2026-10-30T00:00:00Z', 'updated_at': '2026-10-30T00:00:00Z'})
@@ -51,7 +52,8 @@ class Intake(unittest.TestCase):
         return {}
 
     def run_event(self, comment=None):
-        event = {'issue': self.issue}
+        event = {'issue': self.issue, 'action': 'created' if comment else 'opened',
+                 'sender': comment['user'] if comment else self.issue['user']}
         if comment:
             event['comment'] = comment
         p = self.root / 'event.json'
@@ -78,8 +80,10 @@ class Intake(unittest.TestCase):
         self.run_event(last)
         ledger = github_intake.read_ledger(self.comments, self.issue['user']['login'], self.issue['user']['id'])
         self.assertEqual(ledger['state'], 'withdrawn')
-        self.assertEqual(ledger['events'], ['2'])
-        self.assertEqual(ledger['processed'], ['1', '2', '3'])
+        self.assertEqual(ledger['cursor'], 3)
+        audits = [json.loads(c['body'][len(github_intake.MARKER):]) for c in self.comments
+                  if c['body'].startswith(github_intake.MARKER)]
+        self.assertEqual([e['id'] for a in audits for e in a['history']], ['2'])
         count = len(self.writes); self.run_event(last)
         self.assertEqual(count, len(self.writes))
 
@@ -123,7 +127,7 @@ class Intake(unittest.TestCase):
         self.assertNotIn('xxxxx', output)
         self.assertEqual(self.ledger()['state'], 'withdrawn')
         self.assertEqual(self.ledger()['events'], ['20'])
-        self.assertEqual(self.ledger()['processed'], ['10', '11', '12', '20'])
+        self.assertEqual(self.ledger()['cursor'], 20)
         count = len(self.writes)
         self.run_event(final)
         self.assertEqual(count, len(self.writes))
@@ -133,7 +137,7 @@ class Intake(unittest.TestCase):
         bad = self.command(21, 'withdraw')
         with patch.object(github_intake, 'parse_command', side_effect=RecursionError):
             self.run_event(bad)
-        self.assertEqual(self.ledger()['processed'], ['21'])
+        self.assertEqual(self.ledger()['cursor'], 21)
         good = self.command(22, 'withdraw')
         self.run_event(good)
         self.assertEqual(self.ledger()['events'], ['22'])
@@ -144,6 +148,8 @@ class Intake(unittest.TestCase):
 
     def test_comment_first_preserves_form_routing_and_opt_out(self):
         self.active_policy()
+        recovery = self.command(29, 'confirm')
+        recovery['body'] = github_intake.RECOVERY_PREFIX + self.issue['body']
         first = self.command(30, 'refer', actor='synthetic-reviewer-a')
         first['body'] = '/volunteer ' + json.dumps({'action': 'refer', 'reason': 'Synthetic fixture',
                                                    'destination': 'synthetic-reviewer-b'})
@@ -156,7 +162,7 @@ class Intake(unittest.TestCase):
         self.assertEqual(ledger['routing_reason'], 'Approved team_reviewer route')
         self.assertEqual(ledger['referral_preference'], 'do_not_refer')
         self.assertEqual(ledger['state'], 'new')
-        self.assertEqual(ledger['processed'], ['30'])
+        self.assertEqual(ledger['cursor'], 30)
         count = len(self.writes)
         self.run_event()  # delayed issues.opened cannot reset the command-first ledger
         self.assertEqual(count, len(self.writes))
@@ -206,7 +212,7 @@ class Intake(unittest.TestCase):
             # actor changes its body; editor identity is not an authorization.
         self.run_event(command)
         self.assertEqual(self.ledger()['state'], 'new')
-        self.assertEqual(self.ledger()['processed'], ['40', '41'])
+        self.assertEqual(self.ledger()['cursor'], 41)
         count = len(self.writes)
         self.run_event(command)
         self.assertEqual(count, len(self.writes))
@@ -215,11 +221,12 @@ class Intake(unittest.TestCase):
         self.assertEqual(self.ledger()['events'], ['42'])
 
     def test_missing_command_timestamp_is_rejected(self):
+        self.run_event()
         command = self.command(43, 'withdraw')
         del command['updated_at']
         self.run_event(command)
         self.assertEqual(self.ledger()['state'], 'new')
-        self.assertEqual(self.ledger()['processed'], ['43'])
+        self.assertEqual(self.ledger()['cursor'], 43)
 
     def test_edited_trusted_ledger_stops_even_before_later_valid_marker(self):
         self.run_event()
@@ -253,6 +260,8 @@ class Intake(unittest.TestCase):
             'unavailability': 'recorded_absence'})
         self.run_event(command)
         approval = self.command(51, 'approve_escalation', actor='synthetic-approver')
+        approval['body'] = '/volunteer ' + json.dumps({'action': 'approve_escalation',
+            'reason': 'Synthetic fixture', 'proposal_id': '50'})
         self.run_event(approval)
         self.assertEqual(self.ledger()['reviewer'], 'synthetic-reviewer-b')
         self.assertEqual(self.assignees, {'synthetic-existing-owner', 'synthetic-reviewer-a',
@@ -370,7 +379,7 @@ class Intake(unittest.TestCase):
         command = self.command(61, 'withdraw'); command['user']['id'] = 999
         self.run_event(command)
         self.assertEqual(self.ledger()['state'], 'new')
-        self.assertEqual(self.ledger()['processed'], ['61'])
+        self.assertEqual(self.ledger()['cursor'], 61)
         self.issue['user']['id'] = 999
         count = len(self.writes)
         with self.assertRaisesRegex(ValueError, 'Ledger identity mismatch'):
@@ -383,7 +392,7 @@ class Intake(unittest.TestCase):
         command['user']['id'] = IDS['intruder']
         self.run_event(command)
         self.assertEqual(self.ledger()['state'], 'new')
-        self.assertEqual(self.ledger()['processed'], ['64'])
+        self.assertEqual(self.ledger()['cursor'], 64)
         fresh = self.command(65, 'accept', actor='synthetic-reviewer-a')
         fresh['user']['login'] = 'synthetic-renamed-reviewer'
         self.run_event(fresh)
@@ -397,7 +406,7 @@ class Intake(unittest.TestCase):
             command = self.command(number, 'withdraw'); command['user']['id'] = value
         self.run_event(command)
         self.assertEqual(self.ledger()['state'], 'new')
-        self.assertEqual(self.ledger()['processed'], ['62', '63'])
+        self.assertEqual(self.ledger()['cursor'], 63)
 
     def test_legacy_marker_or_missing_stable_ledger_identity_is_not_reset(self):
         self.run_event()

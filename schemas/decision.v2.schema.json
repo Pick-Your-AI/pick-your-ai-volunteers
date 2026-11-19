@@ -50,6 +50,11 @@
         "conflict_of_interest",
         "response_period_expired"
       ]
+    },
+    "proposal_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
     }
   },
   "allOf": [
@@ -100,6 +105,26 @@
           "unavailability"
         ]
       }
+    },
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "enum": [
+              "agree_referral",
+              "decline_referral",
+              "approve_escalation",
+              "reject_escalation"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "proposal_id"
+        ]
+      }
     }
-  ]
+  ],
+  "title": "Volunteer decision command v2"
 }

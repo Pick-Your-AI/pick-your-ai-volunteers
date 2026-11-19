@@ -72,7 +72,7 @@ class PlacementHandoffs(unittest.TestCase):
 
     def test_escalation_approval_preserves_active_placement_and_close(self):
         state = self.escalate(self.active)
-        state = transition(state, event('approve_escalation', actor='reviewer-c'),
+        state = transition(state, event('approve_escalation', actor='reviewer-c', proposal_id='request_escalation'),
                            self.policy, NOW)
         self.assertEqual((state['state'], state['reviewer']), ('active', 'reviewer-b'))
         self.assertIsNone(state['pending'])
@@ -81,7 +81,7 @@ class PlacementHandoffs(unittest.TestCase):
 
     def test_escalation_rejection_preserves_active_placement_and_close(self):
         state = self.escalate(self.active)
-        state = transition(state, event('reject_escalation', actor='reviewer-c'),
+        state = transition(state, event('reject_escalation', actor='reviewer-c', proposal_id='request_escalation'),
                            self.policy, NOW)
         self.assertEqual((state['state'], state['reviewer']), ('active', 'reviewer-a'))
         self.assertEqual(transition(state, event('close'), self.policy, NOW)['state'],
@@ -93,7 +93,7 @@ class PlacementHandoffs(unittest.TestCase):
             with self.subTest(action=action):
                 state = transition(self.active, event('refer', destination='reviewer-b'),
                                    self.policy, NOW)
-                state = transition(state, event(action, actor='applicant'),
+                state = transition(state, event(action, actor='applicant', proposal_id='refer'),
                                    self.policy, NOW)
                 self.assertEqual((state['state'], state['reviewer']), ('active', reviewer))
                 self.assertIsNone(state['pending'])
@@ -104,7 +104,7 @@ class PlacementHandoffs(unittest.TestCase):
                 before = initial('applicant', 'reviewer-a')
                 before['state'] = original
                 pending = self.escalate(before)
-                restored = transition(pending, event('reject_escalation', actor='reviewer-c'),
+                restored = transition(pending, event('reject_escalation', actor='reviewer-c', proposal_id='request_escalation'),
                                       self.policy, NOW)
                 self.assertEqual(restored['state'], original)
 
@@ -113,7 +113,7 @@ class PlacementHandoffs(unittest.TestCase):
         pending.pop('pending_origin', None)
         before = copy.deepcopy(pending)
         with self.assertRaises(ValueError):
-            transition(pending, event('approve_escalation', actor='reviewer-c'),
+            transition(pending, event('approve_escalation', actor='reviewer-c', proposal_id='request_escalation'),
                        self.policy, NOW)
         self.assertEqual(pending, before)
 

@@ -63,7 +63,8 @@ class ProjectIdentityConsumer(unittest.TestCase):
         state = initial('applicant', 'reviewer-a')
         for action in ('accept', 'begin_onboarding', 'complete_onboarding'):
             state = transition(state, event(action), policy(), NOW)
-        state.update(ledger_version=2, initialized=True, public_consent=True)
+        state.update(ledger_version=2, initialized=True, public_consent=True, cursor=3,
+                     history=state['history'][-1:], events=state['events'][-1:])
         issue = {'number': 1, 'user': {'login': 'renamed-applicant', 'id': 101},
                  'labels': [{'name': 'type:application'}],
                  'html_url': 'https://github.com/synthetic/repo/issues/1'}

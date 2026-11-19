@@ -62,6 +62,7 @@ ACTIONS = set(TARGETS) | {'withdraw', 'refer', 'agree_referral', 'decline_referr
                          'request_escalation', 'approve_escalation', 'reject_escalation'}
 UNAVAILABILITY = {'no_designated_reviewer', 'recorded_absence',
                   'conflict_of_interest', 'response_period_expired'}
+RESOLUTIONS = {'agree_referral', 'decline_referral', 'approve_escalation', 'reject_escalation'}
 
 
 def account_id(value):
@@ -80,6 +81,7 @@ def initial(applicant, route=None, referral_preference='ask_each_time', *, appli
             'reviewer': route, 'reviewer_id': reviewer_id,
             'visited': [route] if route else [], 'visited_ids': [reviewer_id] if route else [],
             'pending': None, 'pending_reviewer_id': None, 'pending_origin': None,
+            'pending_proposal_id': None, 'pending_requester_id': None,
             'history': [], 'events': [], 'referral_preference': referral_preference}
 
 
@@ -141,21 +143,29 @@ def transition(current, event, policy, now=None, directory=None):
     if action == 'withdraw':
         if not is_applicant:
             raise ValueError('Only applicant may withdraw')
-        s.update(state='withdrawn', pending=None, pending_reviewer_id=None, pending_origin=None)
+        s.update(state='withdrawn', pending=None, pending_reviewer_id=None, pending_origin=None,
+                 pending_proposal_id=None, pending_requester_id=None, visited=[], visited_ids=[],
+                 selections=[], allow_empty_route=False)
     elif action == 'agree_referral':
         if not is_applicant or old != 'referral_pending':
             raise ValueError('Applicant agreement required')
+        _matching_proposal(s, event)
+        _current_assignment(policy, s, directory, now)
         _pending_authorized(policy, s, now, 'refer')
         _complete_handoff(s, transfer=True)
     elif action == 'decline_referral':
         if not is_applicant or old != 'referral_pending':
             raise ValueError('Applicant decision required')
+        _matching_proposal(s, event)
         _complete_handoff(s, transfer=False)
     elif action == 'request_escalation' and is_applicant:
         if old not in REVIEW_STATES or policy.get('enabled') is not True or not policy.get('approval_reference'):
             raise ValueError('Escalation request unavailable')
+        _current_assignment(policy, s, directory, now)
         _request_handoff(s, event, policy, now, 'awaiting_escalation_approval')
     else:
+        if is_applicant:
+            raise ValueError('Independent reviewer required')
         actor_key = _reviewer_key(policy, event['actor_id'])
         reviewer = _available(policy, actor_key, now)
         if action not in reviewer['actions']:
@@ -170,15 +180,17 @@ def transition(current, event, policy, now=None, directory=None):
                 if resolved != actor_key:
                     raise ValueError('Not current reviewer; approved route required')
                 s.update(reviewer=resolved, reviewer_id=event['actor_id'],
-                         routing_status='resolved', routing_reason=reason)
+                         routing_status='resolved', routing_reason=reason,
+                         assignment_grant={'kind': 'route'})
                 s['visited'].append(resolved)
                 s['visited_ids'].append(event['actor_id'])
             _bound_reviewer(policy, s)
             if actor_key != s['reviewer'] or event['actor_id'] != s['reviewer_id']:
                 raise ValueError('Not current reviewer')
+            _current_assignment(policy, s, directory, now)
         if action in ('refer', 'request_escalation'):
-            if action == 'refer' and s.get('referral_preference') == 'do_not_refer':
-                raise ValueError('Applicant opted out of referrals')
+            if action == 'refer' and s.get('referral_preference') != 'ask_each_time':
+                raise ValueError('Affirmative referral preference required')
             allowed = {'new', 'awaiting_reviewer', 'awaiting_information', 'active'} if action == 'refer' else REVIEW_STATES
             if old not in allowed:
                 raise ValueError('Invalid source state')
@@ -188,9 +200,12 @@ def transition(current, event, policy, now=None, directory=None):
             origin_reviewer = _bound_reviewer(policy, s)
             if (old != 'awaiting_escalation_approval' or
                     actor_key not in origin_reviewer['escalation_approvers'] or
-                    event['actor_id'] in (s['reviewer_id'], s['pending_reviewer_id'])):
+                    event['actor_id'] in (s['reviewer_id'], s['pending_reviewer_id'],
+                                          account_id(s.get('pending_requester_id')))):
                 raise ValueError('Escalation approval required')
+            _matching_proposal(s, event)
             if action == 'approve_escalation':
+                _current_assignment(policy, s, directory, now)
                 _pending_authorized(policy, s, now, 'request_escalation')
             _complete_handoff(s, transfer=action == 'approve_escalation')
         else:
@@ -229,6 +244,44 @@ def _bound_reviewer(policy, state):
     return reviewer
 
 
+def _current_assignment(policy, state, directory, now):
+    # Pure transition callers can supply an explicit assignment directly. The
+    # intake adapter always marks initialized records and supplies the directory.
+    if state.get('initialized') is not True:
+        return
+    grant = state.get('assignment_grant', {})
+    if grant.get('kind') == 'route':
+        if directory is None:
+            raise ValueError('Current scope mandate requires directory')
+        selected = state.get('selections')
+        known = {r['id'] for kind in ('teams', 'repositories', 'projects', 'opportunities')
+                 for r in directory[kind]}
+        if (not isinstance(selected, list) or any(not isinstance(x, str) for x in selected)
+                or not set(selected) <= known):
+            raise ValueError('Current selected scopes require reconciliation')
+        if not selected:
+            valid = (state.get('allow_empty_route') is True and
+                     policy['fallbacks'].get('empty') == state['reviewer'])
+        else:
+            valid = all(any(step.get('reviewer') == state['reviewer'] and
+                            step.get('approval_reference') and
+                            (index == 0 or step.get('fallback_approved') is True)
+                            for index, step in enumerate(policy.get('routes', {}).get(scope, [])))
+                        for scope in selected)
+        if not valid:
+            raise ValueError('Current scope mandate revoked or unresolved')
+    elif grant.get('kind') == 'handoff':
+        origin = policy['reviewers'].get(grant.get('origin'))
+        if (not origin or not origin.get('approval_reference') or
+                account_id(origin.get('github_user_id')) != account_id(grant.get('origin_id')) or
+                state['reviewer'] not in origin['destinations'] or
+                grant.get('action') not in origin['actions'] or
+                not isinstance(grant.get('proposal_id'), str) or not grant['proposal_id']):
+            raise ValueError('Case handoff mandate revoked or unresolved')
+    else:
+        raise ValueError('Assignment mandate requires reconciliation')
+
+
 def _available(policy, actor, now):
     if policy.get('enabled') is not True or not policy.get('approval_reference'):
         raise ValueError('Decision authority not activated')
@@ -242,6 +295,8 @@ def _available(policy, actor, now):
 
 def _request_handoff(state, event, policy, now, pending_state):
     origin = _bound_reviewer(policy, state)
+    if event['action'] not in origin['actions']:
+        raise ValueError('Handoff request outside current mandate')
     destination = event.get('destination')
     receiver = _available(policy, destination, now)
     if destination not in origin['destinations']:
@@ -249,7 +304,15 @@ def _request_handoff(state, event, policy, now, pending_state):
     if destination in state['visited'] or receiver['github_user_id'] in state['visited_ids']:
         raise ValueError('Routing loop')
     state.update(pending=destination, pending_reviewer_id=receiver['github_user_id'],
-                 pending_origin=state['state'], state=pending_state)
+                 pending_origin=state['state'], pending_proposal_id=event['id'],
+                 pending_requester_id=event['actor_id'], state=pending_state)
+
+
+def _matching_proposal(state, event):
+    if (not isinstance(state.get('pending_proposal_id'), str) or
+            event.get('proposal_id') != state['pending_proposal_id'] or
+            ('destination' in event and event['destination'] != state['pending'])):
+        raise ValueError('Resolution must identify the current proposal and recipient')
 
 
 def _pending_authorized(policy, state, now, action):
@@ -263,15 +326,19 @@ def _pending_authorized(policy, state, now, action):
 def _complete_handoff(state, transfer):
     origin = _pending_origin(state)
     if transfer:
+        state['assignment_grant'] = {'kind': 'handoff', 'origin': state['reviewer'],
+            'origin_id': state['reviewer_id'], 'proposal_id': state['pending_proposal_id'],
+            'action': 'refer' if state['state'] == 'referral_pending' else 'request_escalation'}
         state['reviewer'], state['reviewer_id'] = state['pending'], state['pending_reviewer_id']
         state['visited'].append(state['reviewer'])
         state['visited_ids'].append(state['reviewer_id'])
-    state.update(state=origin, pending=None, pending_reviewer_id=None, pending_origin=None)
+    state.update(state=origin, pending=None, pending_reviewer_id=None, pending_origin=None,
+                 pending_proposal_id=None, pending_requester_id=None)
 
 
 def _validate_event(event):
     required = {'id', 'actor', 'actor_id', 'at', 'source', 'action', 'reason'}
-    optional = {'destination', 'receipt', 'unavailability'}
+    optional = {'destination', 'receipt', 'unavailability', 'proposal_id'}
     if not required <= event.keys() or set(event) - required - optional:
         raise ValueError('Incomplete or unknown decision fields')
     account_id(event['actor_id'])
@@ -282,6 +349,10 @@ def _validate_event(event):
         raise ValueError('Invalid action or oversized reason')
     if 'destination' in event and len(event['destination']) > 128:
         raise ValueError('Oversized destination')
+    if event['action'] in RESOLUTIONS and 'proposal_id' not in event:
+        raise ValueError('Proposal identity required')
+    if 'proposal_id' in event and len(event['proposal_id']) > 128:
+        raise ValueError('Oversized proposal identity')
     if 'receipt' in event:
         receipt = event['receipt']
         parsed = urlsplit(receipt)

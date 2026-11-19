@@ -5,7 +5,7 @@ import re
 from pathlib import Path
 import urllib.request
 import urllib.error
-from program import initial, transition, resolve_route
+from program import initial, transition, resolve_route, REVIEW_STATES
 
 ROOT = Path(__file__).resolve().parents[1]
 MARKER = '<!-- volunteer-ledger:v2 -->'
@@ -15,6 +15,8 @@ REFERRAL_CHOICES = {'Ask me before each placement change': 'ask_each_time', 'Do 
 EMPTY_CHOICES = {'Help me find where I am most useful', 'No preference', '_No response_'}
 MAX_COMMAND_LENGTH = 8192
 MAX_COMMAND_DEPTH = 16
+MAX_LEDGER_BYTES = 40000
+RECOVERY_PREFIX = '/volunteer-apply\n'
 
 
 def api(path, payload=None, method=None):
@@ -76,6 +78,7 @@ def read_ledger(items, applicant_login, applicant_id):
     if not positive_id(applicant_id):
         raise ValueError('Application identity requires manual review')
     state = initial(applicant_login, applicant_id=applicant_id)
+    cursor = 0
     for c in items:
         if (c['user']['login'] == 'github-actions[bot]' and
             (c.get('performed_via_github_app') or {}).get('slug') == 'github-actions'):
@@ -87,11 +90,26 @@ def read_ledger(items, applicant_login, applicant_id):
             if not unchanged_comment(c):
                 raise ValueError('Ledger integrity requires manual review')
             state = json.loads(c['body'][len(MARKER):].strip())
-            if (state.get('ledger_version') != 2 or state.get('initialized') is not True or
+            if (not isinstance(state, dict) or state.get('ledger_version') != 2 or state.get('initialized') is not True or
                 not positive_id(state.get('applicant_id'))):
                 raise ValueError('Ledger identity requires manual review')
             if state['applicant_id'] != applicant_id:
                 raise ValueError('Ledger identity mismatch')
+            withdrawal_only = (state.get('withdrawal_only') is True and
+                state.get('public_consent') is False and state.get('state') == 'withdrawn' and
+                state.get('reviewer') is None and state.get('reviewer_id') is None and
+                state.get('selections') == [] and state.get('referral_preference') == 'do_not_refer')
+            if ((state.get('public_consent') is not True and not withdrawal_only) or
+                    state.get('referral_preference') not in REFERRAL_CHOICES.values()):
+                raise ValueError('Ledger consent requires manual review')
+            if (not isinstance(state.get('state'), str) or state['state'] not in
+                    REVIEW_STATES | {'referral_pending', 'awaiting_escalation_approval', 'withdrawn', 'declined', 'closed'}):
+                raise ValueError('Ledger lifecycle requires manual review')
+            if (type(state.get('cursor')) is not int or state['cursor'] < cursor or
+                    not isinstance(state.get('history'), list) or len(state['history']) > 1 or
+                    not isinstance(state.get('events'), list) or len(state['events']) > 1):
+                raise ValueError('Ledger checkpoint requires manual review')
+            cursor = state['cursor']
     return state
 
 
@@ -158,12 +176,20 @@ def initialize(issue, directory, policy):
     state = initial(issue['user']['login'], reviewer, REFERRAL_CHOICES[sections['Referral preference']],
                     applicant_id=applicant_id, reviewer_id=reviewer_id)
     state.update(initialized=True, ledger_version=2, selections=selected, allow_empty_route=allow_empty_route, routing_reason=reason,
-                 routing_status='resolved' if reviewer else 'unresolved', public_consent=True, processed=[])
+                 routing_status='resolved' if reviewer else 'unresolved', public_consent=True,
+                 assignment_grant={'kind': 'route'}, cursor=0)
     return state
 
 
+def render_state(state):
+    body = MARKER + '\n' + json.dumps(state, sort_keys=True)
+    if len(body.encode('utf-8')) > MAX_LEDGER_BYTES:
+        raise ValueError('Ledger entry requires bounded reconciliation')
+    return body
+
+
 def record_state(repo, number, state):
-    api(f'repos/{repo}/issues/{number}/comments', {'body': MARKER + '\n' + json.dumps(state, sort_keys=True)})
+    api(f'repos/{repo}/issues/{number}/comments', {'body': render_state(state)})
 
 
 def add_reviewer(repo, number, reviewer, record):
@@ -182,6 +208,51 @@ def add_reviewer(repo, number, reviewer, record):
         api(f'repos/{repo}/issues/{number}/assignees', {'assignees': [login]}, 'POST')
 
 
+def trusted_command(comment):
+    if not unchanged_comment(comment) or not positive_id(comment['user'].get('id')):
+        raise ValueError('Command integrity requires a fresh identified comment')
+    command = parse_command(comment['body'][len('/volunteer '):])
+    if (not isinstance(command, dict) or
+            set(command) - {'action', 'reason', 'destination', 'receipt', 'unavailability', 'proposal_id'}):
+        raise ValueError('Unknown command keys')
+    command.update(id=str(comment['id']), actor=comment['user']['login'],
+                   actor_id=comment['user']['id'], at=comment['created_at'], source=comment['html_url'])
+    return command
+
+
+def recover_application(issue, items, directory, policy):
+    # The issue body in a later comment event is not an author-attested opening
+    # snapshot. Recover only from a fresh, explicit applicant-authored comment.
+    for c in items:
+        if (c['user'].get('id') != issue['user']['id'] or c['user'].get('type') == 'Bot' or
+                not unchanged_comment(c)):
+            continue
+        try:
+            text = c['body'].replace('\r\n', '\n')
+            if text.startswith(RECOVERY_PREFIX):
+                body = text[len(RECOVERY_PREFIX):]
+                if len(body) > MAX_COMMAND_LENGTH:
+                    raise ValueError('Recovery form resource limit')
+                state = initialize({'user': c['user'], 'body': body}, directory, policy)
+                state.update(cursor=c['id'], consent_source=c['html_url'])
+                return state
+            if c['body'].startswith('/volunteer '):
+                command = trusted_command(c)
+                if command.get('action') != 'withdraw':
+                    continue
+                state = initial(c['user']['login'], referral_preference='do_not_refer',
+                                applicant_id=c['user']['id'])
+                state = transition(state, command, policy, directory=directory)
+                state.update(initialized=True, ledger_version=2, public_consent=False,
+                    withdrawal_only=True, selections=[], allow_empty_route=False,
+                    routing_status='unresolved', routing_reason='Withdrawn before application confirmation',
+                    cursor=c['id'])
+                return state
+        except (ValueError, KeyError, TypeError, RecursionError):
+            continue
+    return None
+
+
 def run():
     event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text(encoding='utf-8'))
     issue = event['issue']
@@ -191,47 +262,52 @@ def run():
     policy = json.loads((ROOT / 'data/authority.v2.json').read_text(encoding='utf-8'))
     directory = json.loads((ROOT / 'data/directory.v1.json').read_text(encoding='utf-8'))
     all_comments = comments(repo, number)
+    if any(not positive_id(c.get('id')) for c in all_comments):
+        raise ValueError('Comment ordering requires manual review')
+    all_comments.sort(key=lambda c: c['id'])
     state = read_ledger(all_comments, issue['user']['login'], issue['user'].get('id'))
     if not state.get('initialized'):
-        # Only a new issue without a trusted V2 ledger can initialize.
-        # Never reset decisions or reinterpret historical consent.
-        if state['history'] or state['events'] or state.get('processed'):
+        if state['history'] or state['events']:
             raise ValueError('Ledger initialization requires manual review')
-        state = initialize(issue, directory, policy)
+        if (event.get('action') == 'opened' and not event.get('comment') and
+                event.get('sender', {}).get('id') == issue['user']['id']):
+            state = initialize(issue, directory, policy)
+            state['consent_source'] = 'issue-opened:' + str(number)
+        else:
+            state = recover_application(issue, all_comments, directory, policy)
+            if state is None:
+                return
         record_state(repo, number, state)
         if state['reviewer']:
             add_reviewer(repo, number, state['reviewer'], policy['reviewers'][state['reviewer']])
-    if not event.get('comment'):
-        return
-    updated = state
-    seen = set(state.get('processed', state['events']))
-    # GitHub concurrency can replace a pending job. Replay unseen commands in API
-    # order so cancellation cannot silently lose an earlier applicant decision.
+    written_cursor = state['cursor']
+    # GitHub comment IDs supply ordered replay. Each accepted transition gets
+    # one small audit delta; rejected commands share a bounded cursor checkpoint.
+    # Older audit comments remain intact instead of being copied into each write.
     for c in all_comments:
-        if c['user']['type'] == 'Bot' or not c['body'].startswith('/volunteer ') or str(c['id']) in seen:
+        if (c['id'] <= state['cursor'] or c['user'].get('type') == 'Bot' or
+                not c['body'].startswith('/volunteer ')):
             continue
+        previous_reviewer = state['reviewer']
         try:
-            if not unchanged_comment(c):
-                raise ValueError('Command integrity requires a fresh comment')
-            command = parse_command(c['body'][len('/volunteer '):])
-            if not isinstance(command, dict) or set(command) - {'action', 'reason', 'destination', 'receipt', 'unavailability'}:
-                raise ValueError('Unknown command keys')
-            if not positive_id(c['user'].get('id')):
-                raise ValueError('Command identity requires review')
-            command.update(id=str(c['id']), actor=c['user']['login'], actor_id=c['user']['id'],
-                           at=c['created_at'], source=c['html_url'])
-            updated = transition(updated, command, policy, directory=directory)
+            command = trusted_command(c)
+            current = dict(state, history=[], events=[])
+            updated = transition(current, command, policy, directory=directory)
+            updated['cursor'] = c['id']
+            render_state(updated)
         except (ValueError, KeyError, TypeError, RecursionError):
             print('Decision rejected: invalid transition, command, consent, or authority. No state changed.')
-        seen.add(str(c['id']))
-    updated = dict(updated, processed=sorted(seen))
-    if updated == state:
-        return
-    record_state(repo, number, updated)
-    # The ledger is authoritative for lifecycle; issue Assignees are canonical responsibility.
-    # Do not silently reassign unrelated work: only this application, only its authorized reviewer.
-    if updated['reviewer'] and updated['reviewer'] != state['reviewer']:
-        add_reviewer(repo, number, updated['reviewer'], policy['reviewers'][updated['reviewer']])
+            state = dict(state, cursor=c['id'], history=[], events=[])
+            continue
+        # Transport failures must stop processing. A POST may have committed even
+        # if its response was lost; never overwrite it with a rejection snapshot.
+        record_state(repo, number, updated)
+        state = updated
+        written_cursor = state['cursor']
+        if state['reviewer'] and state['reviewer'] != previous_reviewer:
+            add_reviewer(repo, number, state['reviewer'], policy['reviewers'][state['reviewer']])
+    if state['cursor'] > written_cursor:
+        record_state(repo, number, state)
 
 
 if __name__ == '__main__':

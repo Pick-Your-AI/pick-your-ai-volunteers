@@ -35,10 +35,15 @@ def main():
         kind = next((v for k, v in kinds.items() if k in labels), None)
         if not kind:
             continue
-        item = gh('project', 'item-add', NUMBER, '--owner', OWNER, '--url', issue['html_url'], '--format', 'json')
         values = {'Kind': kind}
         if kind == 'Application':
-            ledger = read_ledger(pages(f'repos/{REPO}/issues/{issue["number"]}/comments?per_page=100'), issue['user']['login'], issue['user']['id'])
+            try:
+                ledger = read_ledger(pages(f'repos/{REPO}/issues/{issue["number"]}/comments?per_page=100'), issue['user']['login'], issue['user']['id'])
+                if ledger.get('initialized') is not True or ledger.get('public_consent') is not True:
+                    continue
+            except (ValueError, KeyError, TypeError):
+                print('Application skipped: consent or audit requires operator reconciliation.')
+                continue
             state = ledger['state']
             values['Volunteer state'] = {'new': 'New', 'referral_pending': 'Awaiting information', 'awaiting_escalation_approval': 'Awaiting escalation approval'}.get(state, state.replace('_', ' ').capitalize())
             if not ledger['reviewer'] and state == 'new':
@@ -50,6 +55,7 @@ def main():
                 o = matches[0]
                 values['Staffing need'] = o['staffing_need'].replace('_', ' ').capitalize()
                 values['Readiness'] = 'Ready' if o['status'] == 'recruiting' and o['onboarding_capacity'] == 'confirmed' else 'Filled' if o['status'] == 'filled' else 'Capacity unknown'
+        item = gh('project', 'item-add', NUMBER, '--owner', OWNER, '--url', issue['html_url'], '--format', 'json')
         for name, value in values.items():
             f = fields[name]
             option = next(x['id'] for x in f['options'] if x['name'] == value)

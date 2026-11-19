@@ -96,6 +96,18 @@ class IdentityHandoffAcceptanceTests(unittest.TestCase):
             self.apply(state, action, actor, actor_id, policy, **extra)
         self.assertEqual(state, before, "Rejected commands must not mutate their input")
 
+    def resolve(self, state, action, actor, actor_id, **extra):
+        return self.apply(
+            state, action, actor, actor_id,
+            proposal_id=state["pending_proposal_id"], **extra,
+        )
+
+    def assert_resolution_rejected(self, state, action, actor, actor_id, **extra):
+        self.assert_rejected(
+            state, action, actor, actor_id,
+            proposal_id=state["pending_proposal_id"], **extra,
+        )
+
     def lifecycle(self, name):
         """Reach a lifecycle state through commands rather than editing history."""
         state = self.initial()
@@ -128,17 +140,26 @@ class IdentityHandoffAcceptanceTests(unittest.TestCase):
 
     def pending(self, kind, origin="active"):
         state = self.lifecycle(origin)
+        return self.propose(state, kind)
+
+    def propose(self, state, kind, actor=APPLICANT, actor_id=101):
         if kind == "referral":
-            state = self.apply(state, "refer", destination=TARGET)
-            self.assertEqual(state["state"], "referral_pending")
+            event = self.event("refer", destination=TARGET)
         else:
             self.policy["reviewers"][PRIMARY]["availability"] = "absent"
-            state = self.apply(
-                state, "request_escalation", APPLICANT, 101,
+            event = self.event(
+                "request_escalation", actor, actor_id,
                 destination=TARGET, unavailability="recorded_absence",
             )
+        origin = state["state"]
+        state = program.transition(state, event, self.policy, now=NOW, directory=directory())
+        if kind == "referral":
+            self.assertEqual(state["state"], "referral_pending")
+        else:
             self.assertNotEqual(state["state"], origin)
         self.assertEqual(state["reviewer"], PRIMARY)
+        self.assertEqual(state["pending_proposal_id"], event["id"])
+        self.assertEqual(state["pending_requester_id"], event["actor_id"])
         return state
 
     def test_renamed_applicant_can_withdraw_while_policy_disabled(self):
@@ -171,7 +192,7 @@ class IdentityHandoffAcceptanceTests(unittest.TestCase):
 
     def test_referral_target_can_act_after_its_login_changes(self):
         state = self.pending("referral", "new")
-        state = self.apply(state, "agree_referral", "renamed-applicant-synthetic", 101)
+        state = self.resolve(state, "agree_referral", "renamed-applicant-synthetic", 101)
         self.assertEqual(state["state"], "new")
         self.assertEqual(state["reviewer"], TARGET)
         state = self.apply(state, "accept", "renamed-target-synthetic", 202)
@@ -180,36 +201,36 @@ class IdentityHandoffAcceptanceTests(unittest.TestCase):
     def test_referral_agreement_rechecks_origin_destination_authorization(self):
         state = self.pending("referral")
         self.policy["reviewers"][PRIMARY]["destinations"] = []
-        self.assert_rejected(state, "agree_referral", APPLICANT, 101)
+        self.assert_resolution_rejected(state, "agree_referral", APPLICANT, 101)
 
     def test_referral_agreement_rejects_replacement_target_account(self):
         state = self.pending("referral")
         self.policy["reviewers"][TARGET]["github_user_id"] = 203
-        self.assert_rejected(state, "agree_referral", APPLICANT, 101)
+        self.assert_resolution_rejected(state, "agree_referral", APPLICANT, 101)
 
     def test_applicant_can_decline_referral_after_destination_revocation(self):
         state = self.pending("referral")
         self.policy["reviewers"][PRIMARY]["destinations"] = []
         self.policy["reviewers"][TARGET]["github_user_id"] = 203
-        state = self.apply(state, "decline_referral", APPLICANT, 101)
+        state = self.resolve(state, "decline_referral", APPLICANT, 101)
         self.assertEqual(state["state"], "active")
         self.assertEqual(state["reviewer"], PRIMARY)
 
     def test_escalation_approval_rechecks_origin_destination_authorization(self):
         state = self.pending("escalation")
         self.policy["reviewers"][PRIMARY]["destinations"] = []
-        self.assert_rejected(state, "approve_escalation", APPROVER, 203)
+        self.assert_resolution_rejected(state, "approve_escalation", APPROVER, 203)
 
     def test_escalation_approval_rejects_replacement_target_account(self):
         state = self.pending("escalation")
         self.policy["reviewers"][TARGET]["github_user_id"] = 201
-        self.assert_rejected(state, "approve_escalation", APPROVER, 203)
+        self.assert_resolution_rejected(state, "approve_escalation", APPROVER, 203)
 
     def test_escalation_rejection_restores_origin_after_target_revocation(self):
         state = self.pending("escalation")
         self.policy["reviewers"][PRIMARY]["destinations"] = []
         self.policy["reviewers"][TARGET]["github_user_id"] = 201
-        state = self.apply(state, "reject_escalation", APPROVER, 203)
+        state = self.resolve(state, "reject_escalation", APPROVER, 203)
         self.assertEqual(state["state"], "active")
         self.assertEqual(state["reviewer"], PRIMARY)
 
@@ -221,20 +242,156 @@ class IdentityHandoffAcceptanceTests(unittest.TestCase):
             with self.subTest(origin=origin):
                 self.policy = enabled_policy()
                 state = self.pending("escalation", origin)
-                state = self.apply(state, "approve_escalation", "renamed-approver-synthetic", 203)
+                state = self.resolve(state, "approve_escalation", "renamed-approver-synthetic", 203)
                 self.assertEqual(state["state"], origin)
                 self.assertEqual(state["reviewer"], TARGET)
 
     def test_escalation_approver_must_be_distinct_from_target(self):
         state = self.pending("escalation", "new")
         self.policy["reviewers"][PRIMARY]["escalation_approvers"] = [TARGET]
-        self.assert_rejected(state, "approve_escalation", TARGET, 202)
+        self.assert_resolution_rejected(state, "approve_escalation", TARGET, 202)
 
     def test_new_application_escalation_does_not_accept_applicant(self):
         state = self.pending("escalation", "new")
-        state = self.apply(state, "approve_escalation", APPROVER, 203)
+        state = self.resolve(state, "approve_escalation", APPROVER, 203)
         self.assertEqual(state["state"], "new")
         self.assertEqual(state["reviewer"], TARGET)
+
+    def test_every_resolution_requires_the_exact_current_proposal_string(self):
+        for kind, actions, actor, actor_id in (
+            ("referral", ("agree_referral", "decline_referral"), APPLICANT, 101),
+            ("escalation", ("approve_escalation", "reject_escalation"), APPROVER, 203),
+        ):
+            self.policy = enabled_policy()
+            state = self.pending(kind, "new")
+            wrong_ids = (
+                {}, {"proposal_id": "synthetic-unrelated-proposal"},
+                {"proposal_id": state["pending_proposal_id"] + " "},
+                {"proposal_id": None}, {"proposal_id": True},
+                {"proposal_id": 1}, {"proposal_id": []}, {"proposal_id": {}},
+            )
+            for action in actions:
+                for fields in wrong_ids:
+                    with self.subTest(kind=kind, action=action, fields=fields):
+                        self.assert_rejected(state, action, actor, actor_id, **fields)
+
+    def test_every_resolution_rejects_a_mismatched_optional_destination(self):
+        for kind, actions, actor, actor_id in (
+            ("referral", ("agree_referral", "decline_referral"), APPLICANT, 101),
+            ("escalation", ("approve_escalation", "reject_escalation"), APPROVER, 203),
+        ):
+            self.policy = enabled_policy()
+            state = self.pending(kind, "new")
+            for action in actions:
+                with self.subTest(kind=kind, action=action):
+                    self.assert_resolution_rejected(
+                        state, action, actor, actor_id, destination=PRIMARY,
+                    )
+
+    def test_matching_optional_destination_resolves_each_handoff_action(self):
+        for kind, action, actor, actor_id, reviewer in (
+            ("referral", "agree_referral", APPLICANT, 101, TARGET),
+            ("referral", "decline_referral", APPLICANT, 101, PRIMARY),
+            ("escalation", "approve_escalation", APPROVER, 203, TARGET),
+            ("escalation", "reject_escalation", APPROVER, 203, PRIMARY),
+        ):
+            with self.subTest(action=action):
+                self.policy = enabled_policy()
+                state = self.pending(kind, "active")
+                state = self.resolve(state, action, actor, actor_id, destination=TARGET)
+                self.assertEqual(state["state"], "active")
+                self.assertEqual(state["reviewer"], reviewer)
+
+    def test_cancelled_proposal_cannot_resolve_a_later_request_to_same_recipient(self):
+        for kind, cancel, actions, actor, actor_id in (
+            ("referral", "decline_referral", ("agree_referral", "decline_referral"), APPLICANT, 101),
+            ("escalation", "reject_escalation", ("approve_escalation", "reject_escalation"), APPROVER, 203),
+        ):
+            self.policy = enabled_policy()
+            state = self.pending(kind, "active")
+            cancelled_id = state["pending_proposal_id"]
+            state = self.resolve(state, cancel, actor, actor_id)
+            self.assertEqual(state["state"], "active")
+            self.assertEqual(state["reviewer"], PRIMARY)
+            state = self.propose(state, kind)
+            self.assertNotEqual(state["pending_proposal_id"], cancelled_id)
+            for action in actions:
+                with self.subTest(kind=kind, action=action):
+                    self.assert_rejected(
+                        state, action, actor, actor_id,
+                        proposal_id=cancelled_id, destination=TARGET,
+                    )
+
+    def test_applicant_requester_cannot_approve_even_with_separate_reviewer_mandate(self):
+        state = program.initial(APPLICANT, PRIMARY, applicant_id=203, reviewer_id=201)
+        state = self.propose(state, "escalation", APPLICANT, 203)
+        self.assertEqual(state["pending_requester_id"], 203)
+        for action in ("approve_escalation", "reject_escalation"):
+            with self.subTest(action=action):
+                self.assert_resolution_rejected(
+                    state, action, "renamed-approver-synthetic", 203,
+                )
+
+    def test_current_reviewer_cannot_approve_own_replacement_with_named_mandate(self):
+        state = self.pending("escalation", "new")
+        self.policy["reviewers"][PRIMARY]["availability"] = "available"
+        self.policy["reviewers"][PRIMARY]["escalation_approvers"] = [PRIMARY, APPROVER]
+        self.assert_resolution_rejected(state, "approve_escalation", PRIMARY, 201)
+
+    def test_reviewer_decisions_on_own_application_fail_in_each_lifecycle(self):
+        for origin, action, fields in (
+            ("new", "accept", {}),
+            ("new", "decline", {}),
+            ("new", "request_information", {}),
+            ("new", "refer", {"destination": TARGET}),
+            ("accepted", "begin_onboarding", {}),
+            ("onboarding", "request_invitation", {}),
+            ("invitation_requested", "record_invitation_sent", {"receipt": REFERENCE}),
+            ("invitation_sent", "record_invitation_accepted", {"receipt": REFERENCE}),
+            ("onboarding", "complete_onboarding", {}),
+            ("active", "close", {}),
+        ):
+            with self.subTest(origin=origin, action=action):
+                state = self.lifecycle(origin)
+                control = self.apply(deepcopy(state), action, **fields)
+                self.assertNotEqual(control, state, "Control decision must be otherwise valid")
+                # A pre-existing ledger can belong to the assigned reviewer's
+                # account; this fixture preserves its lifecycle and assignment.
+                state["applicant_id"] = 201
+                state["applicant"] = PRIMARY
+                self.assert_rejected(state, action, PRIMARY, 201, **fields)
+
+    def test_self_reviewer_applicant_can_still_withdraw(self):
+        state = program.initial(PRIMARY, PRIMARY, applicant_id=201, reviewer_id=201)
+        state = self.apply(state, "withdraw", PRIMARY, 201, policy={"enabled": False})
+        self.assertEqual(state["state"], "withdrawn")
+
+    def test_self_reviewer_applicant_can_request_unavailable_reviewer_escalation(self):
+        state = program.initial(PRIMARY, PRIMARY, applicant_id=201, reviewer_id=201)
+        state = self.propose(state, "escalation", "renamed-primary-synthetic", 201)
+        self.assertEqual(state["pending_requester_id"], 201)
+        state = self.resolve(state, "approve_escalation", APPROVER, 203)
+        self.assertEqual(state["state"], "new")
+        self.assertEqual(state["reviewer"], TARGET)
+
+    def test_applicant_with_target_reviewer_mandate_can_agree_or_decline_referral(self):
+        for action, expected in (("agree_referral", TARGET), ("decline_referral", PRIMARY)):
+            with self.subTest(action=action):
+                state = program.initial(APPLICANT, PRIMARY, applicant_id=202, reviewer_id=201)
+                state = self.propose(state, "referral")
+                state = self.resolve(state, action, "renamed-target-synthetic", 202)
+                self.assertEqual(state["state"], "new")
+                self.assertEqual(state["reviewer"], expected)
+
+    def test_referral_requires_explicit_ask_each_time_preference(self):
+        for preference in (None, "unknown", "always", "", True, [], {}):
+            with self.subTest(preference=preference):
+                state = self.initial()
+                state["referral_preference"] = preference
+                self.assert_rejected(state, "refer", destination=TARGET)
+        state = self.initial()
+        del state["referral_preference"]
+        self.assert_rejected(state, "refer", destination=TARGET)
 
     def test_missing_selected_routes_do_not_use_global_empty_fallback(self):
         cases = (

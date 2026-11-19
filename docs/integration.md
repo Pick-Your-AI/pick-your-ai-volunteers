@@ -24,7 +24,7 @@ Verify webhook HMAC SHA-256 over raw bytes with constant-time comparison, allowl
 
 Keep public directory cache, public application content and any future restricted intake in separate stores and authorization paths. A private repository does not isolate one applicant from another. A confidential intake requires separately designed access controls, retention policy, reporting route and user disclosure before collecting sensitive data. It must not feed details into public Project fields, exports or logs.
 
-Required website inputs: this repository and Project URL, v1 schema, release/commit pin, application link, visibility disclosure, deterministic recommendation parity tests and the eventually approved reviewer policy. Keep all live decisions on GitHub until the authenticated server implementation has its own security and end-to-end verification.
+Required website inputs: this repository and Project URL, the directory/application v1 schemas, decision v2 and the [v2 status/audit contract](identity-v2.md), release/commit pin, application link, visibility disclosure, deterministic recommendation parity tests and the eventually approved reviewer policy. Keep all live decisions on GitHub until the authenticated server implementation has its own security and end-to-end verification.
 
 ## Verified local consumer example
 

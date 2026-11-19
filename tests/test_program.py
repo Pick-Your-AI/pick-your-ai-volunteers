@@ -37,6 +37,8 @@ class Decisions(unittest.TestCase):
         self.s = initial('applicant', 'reviewer-a')
 
     def move(self, action, actor='reviewer-a', **extra):
+        if action in {'agree_referral', 'decline_referral', 'approve_escalation', 'reject_escalation'}:
+            extra.setdefault('proposal_id', self.s['pending_proposal_id'])
         self.s = transition(self.s, event(action, actor, **extra), self.p, NOW)
         return self.s
 
