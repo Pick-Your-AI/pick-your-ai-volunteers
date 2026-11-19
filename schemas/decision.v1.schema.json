@@ -33,11 +33,15 @@
       "maxLength": 500
     },
     "destination": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
     },
     "receipt": {
       "type": "string",
-      "format": "uri"
+      "format": "uri",
+      "pattern": "^https?://",
+      "maxLength": 2048
     },
     "unavailability": {
       "enum": [
@@ -47,5 +51,55 @@
         "response_period_expired"
       ]
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "enum": [
+              "record_invitation_sent",
+              "record_invitation_accepted"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "receipt"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "enum": [
+              "refer",
+              "request_escalation"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "destination"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "const": "request_escalation"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "unavailability"
+        ]
+      }
+    }
+  ]
 }

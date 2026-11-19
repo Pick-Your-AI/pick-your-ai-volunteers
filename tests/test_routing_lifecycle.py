@@ -6,8 +6,8 @@ import sys
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from program import initial, resolve_route, transition
-from test_program import NOW, event, policy
+from program import resolve_route, transition
+from test_program import NOW, event, policy, initial
 
 
 class RoutingGuards(unittest.TestCase):

@@ -8,13 +8,13 @@ https://raw.githubusercontent.com/Pick-Your-AI/pick-your-ai-volunteers/main/publ
 
 Resolve stable IDs across teams, repositories, Projects, roles and opportunities. Filter many-to-many relationships instead of assuming a hierarchy. Display verification time, unknown fields, recruitment status, capacity and priority rationale. Run the deterministic recommendation function server-side or port its documented ordering with parity tests; always expose browse-all. Cache by commit SHA/ETag and show staleness rather than presenting old availability as current.
 
-Initial submission is an ordinary GitHub link:
+After the hub implementation is independently approved and merged, initial submission uses an ordinary GitHub link:
 
 ```text
 https://github.com/Pick-Your-AI/pick-your-ai-volunteers/issues/new?template=application.yml
 ```
 
-GitHub renders the generated options and requires a signed-in user. Public status is the linked issue and its bot audit comments; the website can link there now. A public REST read (`GET /repos/Pick-Your-AI/pick-your-ai-volunteers/issues/{number}` and paginated `/comments`) needs no private credential but has unauthenticated rate limits. Do not display untrusted Markdown as raw HTML. The current bot marker is `<!-- volunteer-ledger:v1 -->`; only comments created by github-actions[bot] through the github-actions App are authoritative. An arbitrary comment with that marker is not a status record.
+GitHub renders the generated options and requires a signed-in user. Once an application exists, public status is the linked issue and its bot audit comments; the website can link to that issue. A public REST read (`GET /repos/Pick-Your-AI/pick-your-ai-volunteers/issues/{number}` and paginated `/comments`) needs no private credential but has unauthenticated rate limits. Do not display untrusted Markdown as raw HTML. The current bot marker is `<!-- volunteer-ledger:v2 -->`; only comments created by github-actions[bot] through the github-actions App, with unedited timestamps and valid v2 identity metadata, are accepted. An arbitrary comment with that marker is not a status record. A trusted legacy v1 marker requires manual reconciliation under the [identity contract](identity-v2.md).
 
 Referral replies and withdrawals happen on the original GitHub application. Link users to it; applicant-identity checks happen against the signed-in GitHub event actor. There is no installed website submission endpoint, private status endpoint, webhook receiver or GitHub App for this site. Form payloads do not constitute a working API.
 

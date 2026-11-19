@@ -8,6 +8,23 @@ from program import fresh
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def validate_authority(policy, ids):
+    schema = json.loads((ROOT / 'schemas/authority.v2.schema.json').read_text(encoding='utf-8'))
+    Draft202012Validator(schema, format_checker=FormatChecker()).validate(policy)
+    identities = [record['github_user_id'] for record in policy['reviewers'].values()]
+    assert len(identities) == len(set(identities)), 'Reviewer account IDs must be unique'
+    for record in policy['reviewers'].values():
+        assert set(record['destinations'] + record['escalation_approvers']) <= policy['reviewers'].keys()
+    assert set(policy['fallbacks'].values()) <= policy['reviewers'].keys()
+    order = ['team_reviewer', 'repository_maintainer', 'repository_lead', 'parent_team_reviewer', 'organization_fallback']
+    for scope, route in policy['routes'].items():
+        assert scope in ids, 'Unknown routing scope'
+        ranks = [order.index(step['role']) for step in route]
+        assert ranks == sorted(ranks), 'Routing roles out of order'
+        assert len({step['reviewer'] for step in route}) == len(route), 'Repeated routing recipient'
+        assert all(step['reviewer'] in policy['reviewers'] for step in route)
+
+
 def validate():
     d = json.loads((ROOT / 'data/directory.v1.json').read_text(encoding='utf-8'))
     schema = json.loads((ROOT / 'schemas/directory.v1.schema.json').read_text(encoding='utf-8'))
@@ -25,22 +42,8 @@ def validate():
                 assert r['github']['url'].startswith(('https://github.com/Pick-Your-AI/', 'https://github.com/orgs/Pick-Your-AI/'))
                 assert fresh(r['verified_at'], datetime.now(timezone.utc)), 'Stale directory evidence: refresh live source'
     assert all(o['routing_policy_id'] in {r['id'] for r in d['routing_policies']} for o in d['opportunities'])
-    policy = json.loads((ROOT / 'data/authority.v1.json').read_text(encoding='utf-8'))
-    if policy['enabled']:
-        assert policy['approval_reference'] and policy['reviewers'], 'Authority cannot activate without a decision'
-        for name, r in policy['reviewers'].items():
-            assert r['approval_reference'] and r['availability'] in ('available', 'absent', 'unknown', 'conflict')
-            assert set(r['destinations'] + r['escalation_approvers']) <= policy['reviewers'].keys()
-        assert set(policy['fallbacks'].values()) <= policy['reviewers'].keys()
-        order = ['team_reviewer', 'repository_maintainer', 'repository_lead', 'parent_team_reviewer', 'organization_fallback']
-        for scope, route in policy.get('routes', {}).items():
-            assert scope in ids, 'Unknown routing scope'
-            ranks = [order.index(step['role']) for step in route]
-            assert ranks == sorted(ranks), 'Routing roles out of order'
-            assert len({step['reviewer'] for step in route}) == len(route), 'Repeated routing recipient'
-            assert all(step['reviewer'] in policy['reviewers'] and step['approval_reference'] for step in route)
-    else:
-        assert not policy['reviewers'] and not policy['fallbacks'], 'Inactive policy must not imply appointments'
+    policy = json.loads((ROOT / 'data/authority.v2.json').read_text(encoding='utf-8'))
+    validate_authority(policy, ids)
     # Prevent accidentally exporting internal-directory or application fields.
     assert 'internal-discussion' not in json.dumps(d)
     for page in [ROOT / 'README.md', ROOT / 'CONTRIBUTING.md', * (ROOT / 'docs').glob('*.md')]:

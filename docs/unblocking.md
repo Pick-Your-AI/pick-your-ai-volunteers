@@ -1,6 +1,6 @@
 # Completing the volunteer program safely
 
-This is the offline evidence packet for the opportunity issues and implementation PR. It is not a reviewer appointment, a staffing commitment or authorization to run live intake or Project synchronization. Recruiting remains paused and `data/authority.v1.json` remains disabled.
+This is the offline evidence packet for the opportunity issues and implementation PR. It is not a reviewer appointment, a staffing commitment or authorization to run live intake or Project synchronization. Recruiting remains paused and `data/authority.v2.json` remains disabled.
 
 ## Opportunity records
 
@@ -25,7 +25,7 @@ Organization governance must explicitly designate and approve volunteer authorit
 | Canonical opportunity ID | One of the exact stable IDs above |
 | Role or task scope | Bounded responsibilities, success criteria and accepted operational ownership |
 | Recruiting decision | Whether to recruit, with openings and time commitment if established |
-| Receiving support | Named approved reviewer, onboarding owner, mentoring commitment and beginner suitability |
+| Receiving support | Approved reviewer alias and stable numeric `github_user_id`, onboarding owner, mentoring commitment and beginner suitability |
 | Availability | Actual available/absent/conflict/unknown disposition and verification date |
 | Authority | Approval reference, allowed actions and destination scope |
 | Route | Ordered approved route, per-step references, explicit fallback and escalation approvers |
@@ -33,7 +33,7 @@ Organization governance must explicitly designate and approve volunteer authorit
 
 Do not submit personal contact information, sensitive support needs, member exports or private operational details. Public account identities required for an approved policy are separate from the synthetic identities used in tests.
 
-After actual decisions, an authorized maintainer updates canonical `data/directory.v1.json` and, only with an activation decision, `data/authority.v1.json` through a reviewed PR. Generated forms and exports come from the generator:
+After actual decisions, an authorized maintainer updates canonical `data/directory.v1.json` and, only with an activation decision, `data/authority.v2.json` through a reviewed PR. Generated forms and exports come from the generator:
 
 ```sh
 python scripts/generate.py

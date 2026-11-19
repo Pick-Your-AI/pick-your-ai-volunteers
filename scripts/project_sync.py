@@ -38,7 +38,7 @@ def main():
         item = gh('project', 'item-add', NUMBER, '--owner', OWNER, '--url', issue['html_url'], '--format', 'json')
         values = {'Kind': kind}
         if kind == 'Application':
-            ledger = read_ledger(pages(f'repos/{REPO}/issues/{issue["number"]}/comments?per_page=100'), issue['user']['login'])
+            ledger = read_ledger(pages(f'repos/{REPO}/issues/{issue["number"]}/comments?per_page=100'), issue['user']['login'], issue['user']['id'])
             state = ledger['state']
             values['Volunteer state'] = {'new': 'New', 'referral_pending': 'Awaiting information', 'awaiting_escalation_approval': 'Awaiting escalation approval'}.get(state, state.replace('_', ' ').capitalize())
             if not ledger['reviewer'] and state == 'new':

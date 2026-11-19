@@ -7,20 +7,28 @@ import unittest
 from datetime import datetime, timezone
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from program import initial, transition, recommend, public_export, resolve_route
+from program import initial as make_initial, transition, recommend, public_export, resolve_route
 from github_intake import read_ledger, MARKER
 from generate import artifacts
+
+IDS = {'applicant': 101, 'reviewer-a': 201, 'reviewer-b': 202, 'reviewer-c': 203, 'intruder': 999}
+
+
+def initial(applicant, route=None, referral_preference='ask_each_time'):
+    return make_initial(applicant, route, referral_preference, applicant_id=IDS[applicant],
+                        reviewer_id=IDS[route] if route else None)
+
 
 NOW = datetime(2026, 10, 30, tzinfo=timezone.utc)
 ACTIONS = ['accept', 'decline', 'request_information', 'refer', 'request_escalation', 'approve_escalation', 'reject_escalation', 'begin_onboarding', 'request_invitation', 'record_invitation_sent', 'record_invitation_accepted', 'complete_onboarding', 'close']
 
 
 def policy():
-    return {'enabled': True, 'approval_reference': 'synthetic-test-only', 'fallbacks': {'empty': 'reviewer-a'}, 'reviewers': {a: {'availability': 'available', 'verified_at': NOW.isoformat(), 'approval_reference': 'synthetic-test-only', 'actions': ACTIONS, 'destinations': [x for x in ['reviewer-a', 'reviewer-b', 'reviewer-c'] if x != a], 'escalation_approvers': ['reviewer-c']} for a in ['reviewer-a', 'reviewer-b', 'reviewer-c']}}
+    return {'enabled': True, 'approval_reference': 'synthetic-test-only', 'fallbacks': {'empty': 'reviewer-a'}, 'reviewers': {a: {'github_user_id': IDS[a], 'availability': 'available', 'verified_at': NOW.isoformat(), 'approval_reference': 'synthetic-test-only', 'actions': ACTIONS, 'destinations': [x for x in ['reviewer-a', 'reviewer-b', 'reviewer-c'] if x != a], 'escalation_approvers': ['reviewer-c']} for a in ['reviewer-a', 'reviewer-b', 'reviewer-c']}}
 
 
 def event(action, actor='reviewer-a', id=None, **extra):
-    return {'action': action, 'actor': actor, 'id': id or action, 'at': NOW.isoformat(), 'source': 'synthetic-test-only', 'reason': 'Synthetic fixture', **extra}
+    return {'action': action, 'actor': actor, 'actor_id': IDS[actor], 'id': id or action, 'at': NOW.isoformat(), 'source': 'synthetic-test-only', 'reason': 'Synthetic fixture', **extra}
 
 
 class Decisions(unittest.TestCase):
@@ -130,7 +138,7 @@ class Decisions(unittest.TestCase):
 
     def test_spoofed_ledger_ignored(self):
         fake = {'user': {'login': 'intruder'}, 'body': MARKER + json.dumps({'state': 'active'})}
-        self.assertEqual(read_ledger([fake], 'applicant')['state'], 'new')
+        self.assertEqual(read_ledger([fake], 'applicant', 101)['state'], 'new')
 
 
 class Directory(unittest.TestCase):

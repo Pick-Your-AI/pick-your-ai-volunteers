@@ -8,7 +8,11 @@ import urllib.error
 from program import initial, transition, resolve_route
 
 ROOT = Path(__file__).resolve().parents[1]
-MARKER = '<!-- volunteer-ledger:v1 -->'
+MARKER = '<!-- volunteer-ledger:v2 -->'
+LEGACY_MARKER = '<!-- volunteer-ledger:v1 -->'
+VISIBILITY_CONSENT = '- [x] I understand this is public and consent to public application review. Each proposed placement change needs my agreement.'
+REFERRAL_CHOICES = {'Ask me before each placement change': 'ask_each_time', 'Do not refer me': 'do_not_refer'}
+EMPTY_CHOICES = {'Help me find where I am most useful', 'No preference', '_No response_'}
 MAX_COMMAND_LENGTH = 8192
 MAX_COMMAND_DEPTH = 16
 
@@ -64,31 +68,97 @@ def parse_command(body):
     return json.loads(body)
 
 
-def read_ledger(items, applicant):
-    state = initial(applicant)
+def positive_id(value):
+    return type(value) is int and value > 0
+
+
+def read_ledger(items, applicant_login, applicant_id):
+    if not positive_id(applicant_id):
+        raise ValueError('Application identity requires manual review')
+    state = initial(applicant_login, applicant_id=applicant_id)
     for c in items:
         if (c['user']['login'] == 'github-actions[bot]' and
-            (c.get('performed_via_github_app') or {}).get('slug') == 'github-actions' and
-            c['body'].startswith(MARKER)):
+            (c.get('performed_via_github_app') or {}).get('slug') == 'github-actions'):
+            if c['body'].startswith(LEGACY_MARKER):
+                raise ValueError('Legacy ledger requires manual review')
+            if not c['body'].startswith(MARKER):
+                continue
             # A later valid marker must not conceal a changed audit entry.
             if not unchanged_comment(c):
                 raise ValueError('Ledger integrity requires manual review')
             state = json.loads(c['body'][len(MARKER):].strip())
-            if state['applicant'] != applicant:
+            if (state.get('ledger_version') != 2 or state.get('initialized') is not True or
+                not positive_id(state.get('applicant_id'))):
+                raise ValueError('Ledger identity requires manual review')
+            if state['applicant_id'] != applicant_id:
                 raise ValueError('Ledger identity mismatch')
     return state
 
 
+def form_sections(body):
+    if not isinstance(body, str):
+        raise ValueError('Application form requires review')
+    sections = {}
+    current = None
+    for line in body.replace('\r\n', '\n').splitlines():
+        if line.startswith('### '):
+            current = line[4:]
+            if current in sections:
+                raise ValueError('Application form requires review')
+            sections[current] = []
+        elif current is not None:
+            sections[current].append(line)
+    return {name: '\n'.join(lines).strip() for name, lines in sections.items()}
+
+
+def dropdown_ids(value, records):
+    # Match complete generated options, including labels containing commas.
+    options = {record['id'] + ' — ' + record['name']: record['id'] for record in records}
+    options.update({choice: None for choice in EMPTY_CHOICES})
+    selected = []
+    rest = value
+    while rest:
+        matches = [choice for choice in options if rest == choice or rest.startswith(choice + ', ')]
+        if len(matches) != 1:
+            raise ValueError('Application choices require review')
+        choice = matches[0]
+        if options[choice] is not None:
+            selected.append(options[choice])
+        rest = rest[len(choice):]
+        if rest:
+            rest = rest[2:]
+            if not rest:
+                raise ValueError('Application choices require review')
+    return selected
+
+
 def initialize(issue, directory, policy):
-    known = {r['id'] for kind in ('teams', 'repositories', 'projects', 'opportunities') for r in directory[kind]}
-    selected = sorted(set(re.findall(r'[A-Za-z0-9_-]+', issue.get('body') or '')) & known)
-    reviewer, reason = resolve_route(directory, policy, selected)
-    preference = 'ask_each_time'
-    if '### Referral preference\n\nDo not refer me' in (issue.get('body') or '').replace('\r\n', '\n'):
-        preference = 'do_not_refer'
-    state = initial(issue['user']['login'], reviewer, preference)
-    state.update(initialized=True, selections=selected, routing_reason=reason,
-                 routing_status='resolved' if reviewer else 'unresolved', processed=[])
+    applicant_id = issue['user'].get('id')
+    if not positive_id(applicant_id):
+        raise ValueError('Application identity requires review')
+    sections = form_sections(issue.get('body'))
+    if (sections.get('Visibility consent') not in {VISIBILITY_CONSENT, VISIBILITY_CONSENT.replace('[x]', '[X]')} or
+        sections.get('Referral preference') not in REFERRAL_CHOICES):
+        raise ValueError('Application consent requires review')
+    selected = []
+    explicit_empty = False
+    for kind, label in [('opportunities', 'Preferred opportunity'), ('teams', 'Preferred team'),
+                        ('repositories', 'Preferred repository'), ('projects', 'Preferred Project')]:
+        if label in sections:
+            choices = sections[label]
+            selected.extend(dropdown_ids(choices, directory[kind]))
+            explicit_empty = explicit_empty or any(choice in choices for choice in EMPTY_CHOICES - {'_No response_'})
+    selected = sorted(set(selected))
+    allow_empty_route = explicit_empty and not selected
+    if selected or allow_empty_route:
+        reviewer, reason = resolve_route(directory, policy, selected)
+    else:
+        reviewer, reason = None, 'No explicit routing preference; operator clarification required'
+    reviewer_id = policy['reviewers'][reviewer]['github_user_id'] if reviewer else None
+    state = initial(issue['user']['login'], reviewer, REFERRAL_CHOICES[sections['Referral preference']],
+                    applicant_id=applicant_id, reviewer_id=reviewer_id)
+    state.update(initialized=True, ledger_version=2, selections=selected, allow_empty_route=allow_empty_route, routing_reason=reason,
+                 routing_status='resolved' if reviewer else 'unresolved', public_consent=True, processed=[])
     return state
 
 
@@ -96,10 +166,20 @@ def record_state(repo, number, state):
     api(f'repos/{repo}/issues/{number}/comments', {'body': MARKER + '\n' + json.dumps(state, sort_keys=True)})
 
 
-def add_reviewer(repo, number, reviewer):
+def add_reviewer(repo, number, reviewer, record):
     if reviewer:
-        # The additive endpoint preserves unrelated owners and prior assignees.
-        api(f'repos/{repo}/issues/{number}/assignees', {'assignees': [reviewer]}, 'POST')
+        reviewer_id = record.get('github_user_id')
+        if not positive_id(reviewer_id):
+            raise ValueError('Reviewer identity requires review')
+        current = api(f'user/{reviewer_id}')
+        login = current.get('login')
+        if (not positive_id(current.get('id')) or current['id'] != reviewer_id or
+            not isinstance(login, str) or
+            not re.fullmatch(r'[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?', login)):
+            raise ValueError('Reviewer identity requires review')
+        # Resolve current login from the immutable ID; never use the policy alias
+        # as a GitHub assignee. The additive endpoint preserves existing owners.
+        api(f'repos/{repo}/issues/{number}/assignees', {'assignees': [login]}, 'POST')
 
 
 def run():
@@ -108,18 +188,19 @@ def run():
     if issue.get('pull_request') or not any(l['name'] == 'type:application' for l in issue['labels']):
         return
     repo, number = os.environ['GITHUB_REPOSITORY'], issue['number']
-    policy = json.loads((ROOT / 'data/authority.v1.json').read_text(encoding='utf-8'))
+    policy = json.loads((ROOT / 'data/authority.v2.json').read_text(encoding='utf-8'))
     directory = json.loads((ROOT / 'data/directory.v1.json').read_text(encoding='utf-8'))
     all_comments = comments(repo, number)
-    state = read_ledger(all_comments, issue['user']['login'])
+    state = read_ledger(all_comments, issue['user']['login'], issue['user'].get('id'))
     if not state.get('initialized'):
-        # An old command-first ledger can have decisions but no form metadata.
-        # Do not reset decisions or silently reinterpret historical consent.
+        # Only a new issue without a trusted V2 ledger can initialize.
+        # Never reset decisions or reinterpret historical consent.
         if state['history'] or state['events'] or state.get('processed'):
             raise ValueError('Ledger initialization requires manual review')
         state = initialize(issue, directory, policy)
         record_state(repo, number, state)
-        add_reviewer(repo, number, state['reviewer'])
+        if state['reviewer']:
+            add_reviewer(repo, number, state['reviewer'], policy['reviewers'][state['reviewer']])
     if not event.get('comment'):
         return
     updated = state
@@ -135,7 +216,10 @@ def run():
             command = parse_command(c['body'][len('/volunteer '):])
             if not isinstance(command, dict) or set(command) - {'action', 'reason', 'destination', 'receipt', 'unavailability'}:
                 raise ValueError('Unknown command keys')
-            command.update(id=str(c['id']), actor=c['user']['login'], at=c['created_at'], source=c['html_url'])
+            if not positive_id(c['user'].get('id')):
+                raise ValueError('Command identity requires review')
+            command.update(id=str(c['id']), actor=c['user']['login'], actor_id=c['user']['id'],
+                           at=c['created_at'], source=c['html_url'])
             updated = transition(updated, command, policy, directory=directory)
         except (ValueError, KeyError, TypeError, RecursionError):
             print('Decision rejected: invalid transition, command, consent, or authority. No state changed.')
@@ -147,7 +231,7 @@ def run():
     # The ledger is authoritative for lifecycle; issue Assignees are canonical responsibility.
     # Do not silently reassign unrelated work: only this application, only its authorized reviewer.
     if updated['reviewer'] and updated['reviewer'] != state['reviewer']:
-        add_reviewer(repo, number, updated['reviewer'])
+        add_reviewer(repo, number, updated['reviewer'], policy['reviewers'][updated['reviewer']])
 
 
 if __name__ == '__main__':
