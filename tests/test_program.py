@@ -64,9 +64,13 @@ class Decisions(unittest.TestCase):
         with self.assertRaises(ValueError): self.move('accept')
 
     def test_empty_route_needs_approved_fallback(self):
-        self.s = initial('applicant')
+        directory = {kind: [] for kind in ('teams', 'repositories', 'projects', 'opportunities')}
+        route, _ = resolve_route(directory, self.p, [], NOW)
+        self.s = initial('applicant', route)
         self.assertEqual(self.move('accept')['reviewer'], 'reviewer-a')
-        self.s = initial('applicant'); self.p['fallbacks'] = {}
+        self.p['fallbacks'] = {}
+        route, _ = resolve_route(directory, self.p, [], NOW)
+        self.s = initial('applicant', route)
         with self.assertRaises(ValueError): self.move('accept')
 
     def test_referral_requires_agreement_and_prevents_loop(self):

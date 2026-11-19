@@ -18,4 +18,6 @@ python scripts/generate.py --check
 
 On Windows use `.venv/Scripts/python.exe` instead of activation. All fixture identities are synthetic. Do not create fake public volunteers or send test invitations. Do not commit application exports, private data, secrets, or raw organization membership snapshots. The directory contains public entity metadata only.
 
+`paseo.json` exposes generation, validation, tests, generated-file checking and staged/unstaged whitespace checks for POSIX worktrees. Prepare the virtual environment above before using those scripts; setup only prints this prerequisite and teardown starts or stops no services. The menu commands use `.venv/bin/python`; on Windows run the same arguments with `.venv/Scripts/python.exe`. A shell-command check does not establish Paseo UI or fresh-VM acceptance.
+
 Review changes to authority, workflow permissions, schemas, generated forms and public/private boundaries explicitly. Run live link verification and Project readback separately; unit tests do not establish GitHub access, delivery or legal status.

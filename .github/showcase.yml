@@ -1,0 +1,5 @@
+for: Pick-Your-AI/pick-your-ai-volunteers
+icon: assets/icon.png
+chips:
+  key: ["Planned nonprofit"]
+  attrs: ["Public-safe intake", "Placement review"]

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "verified_at": "2026-11-19T16:04:51.045690+00:00",
+  "environment": "Existing isolated Linux workspace; Python virtual environment with installed pinned system packages; no new VM",
+  "python": "3.12.14",
+  "dependencies": {
+    "jsonschema": "4.26.0",
+    "PyYAML": "6.0.3"
+  },
+  "source_base": "f6669f7af335b4a6c120984e406093954fdff96b",
+  "default_branch_at_start": "cddd346f447386ee452241c16c9a3079c3d64d5e",
+  "tests": 52,
+  "result": "passed",
+  "evidence_level": "offline synthetic fixtures and mocked GitHub transport",
+  "commands": [
+    "python scripts/validate.py",
+    "python -m unittest discover -s tests -v",
+    "python scripts/generate.py --check",
+    "git diff --check",
+    "git diff --cached --check"
+  ],
+  "source_sha256": {
+    "scripts/generate.py": "eea54a36a6b1fe71d5df9faa7db0f46c0f82eddfe1016a2fb2849226da2346c3",
+    "scripts/github_intake.py": "922775c5b225e98bf14da9c8bb0f5eafe389ee0fe46e23ea1f9a787b3c45a914",
+    "scripts/program.py": "45895651e42270f24ef593600b508b8aaa860b56865559e294102cabf69d43bc",
+    "scripts/project_sync.py": "331ea0f2bae2bf84fb5cacd37e0e11ba2478884c6319a0390210a72da5dd03ba",
+    "scripts/validate.py": "72849a8de4c3aa6ee9babdfb3dbb2d2faeed153988bdd44dafc3ace483ebf5ea",
+    "tests/test_intake.py": "1ba02d831eb0ff2865b3ab5080abbf47a691c03992b1552f2eb09f2adb445363",
+    "tests/test_program.py": "9160dcfc992e309d70874846a300ffcb1c726398fbdc4c72ca5d1ca887ba1842",
+    "tests/test_routing_lifecycle.py": "00a28bb2f401d367f1c8ce36b7b8848a9fb3349e4d7e66dc0f95de6d53c5496e"
+  },
+  "not_verified": [
+    "new fresh VM",
+    "live intake or volunteer placement",
+    "actual staffing, reviewer availability or authority",
+    "live Project synchronization",
+    "invitations or permission changes",
+    "Paseo application UI/lifecycle integration",
+    "GitHub browser rendering of artwork",
+    "default-branch runtime before merge",
+    "eligible GitHub latest-push approving review",
+    "website API"
+  ]
+}

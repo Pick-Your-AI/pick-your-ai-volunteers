@@ -1,3 +1,13 @@
+<!-- showcase:banner:start -->
+<p align="center">
+  <img src="docs/images/banner.png" alt="Pick Your AI volunteer directory" width="100%">
+</p>
+<!-- showcase:banner:end -->
+
+<!-- showcase:nav:start -->
+**Pick Your AI** · [All repositories](https://github.com/Pick-Your-AI) · [Contributing](CONTRIBUTING.md) · [Directory](docs/directory.md) · [Conduct](docs/conduct.md)
+<!-- showcase:nav:end -->
+
 # Pick Your AI volunteers
 
 Help make AI architecture, compatibility, costs and evidence easier to understand. This hub supports community contributions to open research, documentation, education and software. The [documented direction](https://github.com/Pick-Your-AI/.github/blob/main/profile/README.md) is public benefit through transparent comparisons, learning and community participation; intended benefits are not measured outcomes or a legal qualification.
@@ -17,5 +27,6 @@ The application is public. No restricted intake has been installed. Share only y
 - [Versioned model and recommendations](docs/model.md)
 - [Prior work and discovery](docs/prior-work.md)
 - [Verification and remaining dependencies](docs/verification.md)
+- [Evidence needed to unblock staffing and integration](docs/unblocking.md)
 
 Work stays in its owning repository. Volunteer applications and staffing records stay here; this hub does not alter the research submission contracts or replace an existing issue's assignee.

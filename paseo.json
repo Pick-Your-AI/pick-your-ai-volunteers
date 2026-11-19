@@ -1,0 +1,25 @@
+{
+  "worktree": {
+    "setup": [
+      "echo \"Use Python 3.12 and follow CONTRIBUTING.md to prepare .venv before running the development commands.\""
+    ],
+    "teardown": "echo \"Setup starts no persistent services; Paseo handles worktree removal.\""
+  },
+  "scripts": {
+    "generate": {
+      "command": ".venv/bin/python scripts/generate.py"
+    },
+    "validate": {
+      "command": ".venv/bin/python scripts/validate.py"
+    },
+    "test": {
+      "command": ".venv/bin/python -m unittest discover -s tests -v"
+    },
+    "generated-check": {
+      "command": ".venv/bin/python scripts/generate.py --check"
+    },
+    "diff-check": {
+      "command": "git diff --check && git diff --cached --check"
+    }
+  }
+}

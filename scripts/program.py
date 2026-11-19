@@ -44,7 +44,7 @@ def recommend(directory, interests, skills, hours=None, needs_mentor=False, now=
 
 
 def initial(applicant, route=None, referral_preference='ask_each_time'):
-    return {'state': 'new', 'applicant': applicant, 'reviewer': route, 'visited': [route] if route else [], 'pending': None, 'history': [], 'events': [], 'referral_preference': referral_preference}
+    return {'state': 'new', 'applicant': applicant, 'reviewer': route, 'visited': [route] if route else [], 'pending': None, 'pending_origin': None, 'history': [], 'events': [], 'referral_preference': referral_preference}
 
 
 def resolve_route(directory, policy, selections, now=None):
@@ -59,6 +59,8 @@ def resolve_route(directory, policy, selections, now=None):
         return None, 'Decision authority not activated'
     chosen = sorted(set(selections) & known)
     routes = [policy.get('routes', {}).get(id) for id in chosen]
+    if any(routes) and not all(routes):
+        return None, 'Selected interests include an unresolved route; operator clarification required'
     routes = [route for route in routes if route]
     if routes and any(route != routes[0] for route in routes[1:]):
         return None, 'Selected interests have different routes; operator clarification required'
@@ -82,7 +84,7 @@ def resolve_route(directory, policy, selections, now=None):
     return None, 'No available approved route; request escalation authorization'
 
 
-def transition(current, event, policy, now=None):
+def transition(current, event, policy, now=None, directory=None):
     """Actor and source come from trusted GitHub metadata, never user JSON."""
     now = now or datetime.now(timezone.utc)
     required = {'id', 'actor', 'at', 'source', 'action', 'reason'}
@@ -99,18 +101,18 @@ def transition(current, event, policy, now=None):
     if action == 'withdraw':
         if actor != s['applicant']:
             raise ValueError('Only applicant may withdraw')
-        s['state'], s['pending'] = 'withdrawn', None
+        s.update(state='withdrawn', pending=None, pending_origin=None)
     elif action == 'agree_referral':
         if actor != s['applicant'] or old != 'referral_pending':
             raise ValueError('Applicant agreement required')
         destination = s['pending']
         _available(policy, destination, now)
-        s.update(state='awaiting_reviewer', reviewer=destination, pending=None)
+        s.update(state=_pending_origin(s), reviewer=destination, pending=None, pending_origin=None)
         s['visited'].append(destination)
     elif action == 'decline_referral':
         if actor != s['applicant'] or old != 'referral_pending':
             raise ValueError('Applicant decision required')
-        s.update(state='awaiting_reviewer', pending=None)
+        s.update(state=_pending_origin(s), pending=None, pending_origin=None)
     elif action == 'request_escalation' and actor == s['applicant']:
         if old not in ('new', 'awaiting_reviewer', 'awaiting_information') or not policy['enabled'] or not policy.get('approval_reference'):
             raise ValueError('Escalation request unavailable')
@@ -121,18 +123,22 @@ def transition(current, event, policy, now=None):
         if event.get('unavailability') not in ('no_designated_reviewer', 'recorded_absence', 'conflict_of_interest', 'response_period_expired'):
             raise ValueError('Unavailability reason required')
         _available(policy, dest, now)
-        s.update(state='awaiting_escalation_approval', pending=dest)
+        s.update(state='awaiting_escalation_approval', pending=dest, pending_origin=old)
     else:
         _available(policy, actor, now)
         reviewer = policy['reviewers'][actor]
         if action not in reviewer['actions']:
             raise ValueError('Action outside mandate')
         if action not in ('approve_escalation', 'reject_escalation') and actor != s['reviewer']:
-            # An explicitly approved empty-route fallback may receive a new application.
-            if not (old == 'new' and s['reviewer'] is None and policy['fallbacks'].get('empty') == actor):
-                raise ValueError('Not current reviewer')
-            s['reviewer'] = actor
-            s['visited'].append(actor)
+            # Only resolve_route can establish an approved empty-route fallback.
+            # None also represents unavailable or conflicting nonempty routes.
+            if old != 'new' or s['reviewer'] is not None or directory is None or not s.get('initialized') or 'selections' not in s:
+                raise ValueError('Not current reviewer; approved route required')
+            resolved, reason = resolve_route(directory, policy, s['selections'], now)
+            if resolved != actor:
+                raise ValueError('Not current reviewer; approved route required')
+            s.update(reviewer=resolved, routing_status='resolved', routing_reason=reason)
+            s['visited'].append(resolved)
         if action in ('refer', 'request_escalation'):
             if action == 'refer' and s.get('referral_preference') == 'do_not_refer':
                 raise ValueError('Applicant opted out of referrals')
@@ -146,16 +152,17 @@ def transition(current, event, policy, now=None):
                 raise ValueError('Destination outside mandate')
             if action == 'request_escalation' and event.get('unavailability') not in ('no_designated_reviewer', 'recorded_absence', 'conflict_of_interest', 'response_period_expired'):
                 raise ValueError('Unavailability reason required')
-            s.update(state='referral_pending' if action == 'refer' else 'awaiting_escalation_approval', pending=dest)
+            s.update(state='referral_pending' if action == 'refer' else 'awaiting_escalation_approval', pending=dest, pending_origin=old)
         elif action in ('approve_escalation', 'reject_escalation'):
             if old != 'awaiting_escalation_approval' or actor not in policy['reviewers'][s['reviewer']]['escalation_approvers']:
                 raise ValueError('Escalation approval required')
+            origin = _pending_origin(s)
             if action == 'approve_escalation':
                 _available(policy, s['pending'], now)
                 # Escalation changes reviewer, not volunteer placement.
                 s['reviewer'] = s['pending']
                 s['visited'].append(s['pending'])
-            s.update(state='awaiting_reviewer', pending=None)
+            s.update(state=origin, pending=None, pending_origin=None)
         else:
             targets = {
                 'request_information': ({'new', 'awaiting_reviewer', 'awaiting_information'}, 'awaiting_information'),
@@ -176,6 +183,13 @@ def transition(current, event, policy, now=None):
     s['history'].append({'previous': old, 'new': s['state'], **event, 'receiving_reviewer': s['reviewer']})
     s['events'].append(event['id'])
     return s
+
+
+def _pending_origin(state):
+    origin = state.get('pending_origin')
+    if origin not in ('new', 'awaiting_reviewer', 'awaiting_information', 'active'):
+        raise ValueError('Missing handoff origin; operator reconciliation required')
+    return origin
 
 
 def _available(policy, actor, now):
